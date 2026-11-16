@@ -1,0 +1,679 @@
+
+/*
+
+filename: style.css
+
+author: Wilson's Dream Team
+
+created: 18/10/2026
+
+last modified: 29/10/2026
+
+description: index.html, jobs.html, apply.html, about.html
+
+*/
+/*---------------------------------index+about---------------------------------- */
+/* setup*/
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 48px;
+    margin: 10px 0;
+}
+
+h2 {
+    color: #00f2fe; 
+}
+
+a {
+    color: #ffffff;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/*header */
+
+header {
+    background-color: #121c33;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    border-bottom: 2px solid #111827;
+}
+
+header img {
+    width: 320px;
+    height: 100px;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin-left: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #00f2fe;
+}
+
+nav a[aria-current="page"] {
+    color: #00f2fe;
+    border-bottom: 2px solid #00f2fe;
+}
+
+/*page */
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+
+.intro-text {
+    width: 58%;
+}
+
+.hiring {
+    display: inline-block;
+    background-color: #111827;
+    border: 1px solid #00f2fe;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+.tags {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tags li {
+    background-color: #111827;
+    border: 1px solid #00f2fe;
+    padding: 8px 15px;
+    margin-bottom: 8px;
+}
+.right-box {
+    width: 34%;
+    background-color: #111827;
+    border: 2px solid #00f2fe;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.right-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.right-box li {
+    background-color: #000000;
+    border: 1px solid #00f2fe;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+/*box,button*/
+.button, 
+button[type="submit"] {
+    display: inline-block;
+    background-color: #111827;
+    border: 2px solid #7adadf;
+    color: #ffffff;
+    padding: 12px 25px;
+    margin-right: 10px;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.button:hover, 
+button[type="submit"]:hover {
+    background-color: #00f2fe;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.4);
+
+}
+.box {
+    background-color: #111827;
+    border: 2px solid #00f2fe;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.search-select {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 5px;
+    background-color: #111827;
+    color: #ffffff;
+    border: 2px solid #00f2fe;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-select:focus {
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}
+
+.search-select option {
+    background-color: #111827;
+    color: #ffffff;
+    padding: 10px;
+}
+
+input, button {
+    padding: 8px;
+    margin: 5px;
+}
+
+/* table*/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+caption {
+    padding: 8px;
+    font-weight: bold;
+}
+
+th, td {
+    border: 1px solid #ffffff;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #000000;
+    color: #00f2fe;
+}
+
+/* animation*/
+
+.right-box li,
+table tbody tr,
+.box,
+.tags li,
+.photo,
+.job {
+    transition: all 0.3s ease;
+}
+.right-box li:hover {
+    transform: translateX(8px);
+    background-color: #121c33;
+    border-color: #00f2fe;
+    box-shadow: -4px 0 12px rgba(0, 242, 254, 0.4);
+}
+.photo:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.5));
+}
+
+table tbody tr:hover {
+    background-color: rgba(0, 242, 254, 0.15);
+    cursor: pointer;
+}
+
+table tbody tr:hover td {
+    color: #00f2fe;
+    border-color: #00f2fe;
+}
+
+.box:hover {
+    border-color: #00f2fe;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+    transform: translateY(-6px);
+}
+
+
+.tags li:hover {
+    transform: translateY(-3px);
+    background-color: #1a263d;
+    color: #00f2fe;
+    box-shadow: 0 4px 8px rgba(0, 242, 254, 0.2);
+}
+
+/*footer*/
+
+footer {
+    padding: 20px 5%;
+    background-color: #121c33;
+    border-top: 2px solid #111827;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-columns section {
+    width: 30%;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer li {
+    margin-bottom: 8px;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #ffffff;
+    padding-top: 15px;
+}
+/*photo fun facts of about*/
+.team-photo {
+    width: 60px;      
+    height: 60px;      
+    object-fit: cover; 
+    border-radius: 50%;
+    border: 2px solid #00f2fe; 
+    display: block;
+    margin: 0 auto;  
+}
+table td:first-child,
+table th:first-child {
+    width: 80px;
+    max-width: 80px;
+}
+
+table td, table th {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 8px;
+}
+
+.box table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+/*---------------------------------jobs---------------------------------- */
+
+
+.page-intro {
+    padding: 30px 0 10px;
+}
+
+.jump-links {
+    margin-top: 15px;
+}
+
+.page-intro .eyebrow {
+    font-size: 0.7rem;
+}
+
+.eyebrow {
+    display: inline-block;
+    margin: 0 0 1.25rem;
+    padding: 0.35rem 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: cyan;
+    background: rgba(0, 242, 254, 0.07);
+    border: 1px solid;
+    border-radius: 999px;
+}
+
+.jobs-layout {
+    margin-bottom: 30px;
+}
+
+.page-intro p {
+    font-size: 1.1rem;
+    max-width: 60ch;
+}
+
+.page-intro h1 {
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+aside.side-note {
+    float: right;
+    width: 25%;
+    margin: 0 0 20px 25px;
+    padding: 20px;
+    border: 2px solid #00f2fe;
+    border-radius: 20px;
+    background-color: #111827;
+    color: #ffffff;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+
+.side-note .eyebrow{
+    font-size: 0.7rem;
+    margin: auto;
+}
+
+.job:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(11, 29, 58, 0.18);
+    border-color: #1e5bb8;
+}
+
+.jobs-content {
+    overflow: hidden;
+}
+
+.ref {
+    margin: 0;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #000000;
+    background: cyan;
+    border-radius: 999px;
+}
+
+/* One job card */
+.job {
+    background-color: #111827;
+    border: 2px solid #00f2fe;
+    border-radius: 20px;
+    border-left: 8px solid #00f2fe;
+    padding: 20px 25px;
+    margin-bottom: 30px;
+}
+
+.job h2 {
+    margin: 0;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+}
+
+.job h3 {
+    color: #ffffff;
+    border-bottom: 1px solid #00f2fe;
+    padding-bottom: 5px;
+}
+
+.job-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ref {
+    margin: 0;
+    background-color: Cyan;
+    border: 1px solid black;
+    padding: 5px 12px;
+    font-size: 0.9rem;
+}
+
+.job-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 0 0 2rem;
+}
+
+.job-meta div {
+    padding: 0.9rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+}
+
+.job-meta dt {
+    margin-bottom: 0.25rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: cyan;
+}
+
+.job-meta dd {
+    margin: 0;
+    color: #ffffff;
+}
+
+.job-meta .salary {
+    font-weight: 700;
+}
+
+/* Essential and preferable requirements side by side */
+.job-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.job li,
+.box ol li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+/* ---------- Hiring process ---------- */
+.box #process-title {
+    text-transform:uppercase;
+    font-size: 200%;
+}
+
+.hire {
+    max-width: none;
+}
+
+.hire-intro {
+    color: #c9d3ea;
+}
+
+.steps {
+    margin: 0 0 20px;
+    padding-left: 1.5rem;
+}
+
+.steps li {
+    margin-bottom: 14px;
+    padding-left: 6px;
+    line-height: 1.6;
+}
+
+.steps li::marker {
+    color: #00f2fe;
+    font-weight: 700;
+}
+
+.steps h3 {
+    margin: 0 0 2px;
+    padding: 0;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.steps p {
+    margin: 0;
+    color: #c9d3ea;
+}
+
+
+
+/* Visible keyboard focus (accessibility) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+}
+
+/* Current page link in the menu */
+nav a[aria-current="page"] {
+    color: #00f2fe;
+    border-bottom: 2px solid #00f2fe;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto ;
+    }
+
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header img {
+        width: 200px;
+        height: auto;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav li {
+        margin: 5px 12px;
+    }
+
+    .top-section,
+    .form-layout,
+    .footer-columns {
+        flex-direction: column;
+    }
+
+    .intro-text,
+    .right-box,
+    .left-section,
+    .right-section,
+    .footer-columns section {
+        width: 100%;
+    }
+}
+
+/*---------------------------------apply---------------------------------- */
+/* filename: styles.css
+author: Wilson's Dream team
+latest update: 21/10/2026 
+Description: style for apply.html */
+
+ #Job_apply{
+    background-color: white;
+    color:#000000;
+    max-width: 1000px;
+    margin: auto;
+    padding: 25px; 
+    border: 5px solid #00D9E6;
+    border-radius: 12px;
+}
+
+#h1_apply {
+    text-align: center;
+    color: Cyan;
+}
+
+input, select, textarea {
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+select, textarea {
+    width: 100%;
+}
+
+fieldset {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+label {
+    display: inline-block;
+    margin: 5px 15px 5px 5px;
+}
+
+#link_pos {
+    color: blue;
+}
+
+.form-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.left-section {
+    width: 48%;
+}
+
+.right-section {
+    width: 48%;
+}
+
+.form-buttons {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+input[type="submit"] {
+    background-color: #00D9E6;
+    color: #08202B;
+}
+
+input[type="reset"] {
+    background-color: #E5E7EB;
+    color: #374151;
+}
+/*---------------------------------about---------------------------------- */
+
