@@ -14,17 +14,10 @@
 </head>
 
 <body>
-    <header>
-        <a href="index.html"><img src="images/logo.png" alt="DTShop logo - Digital Tech Components" width="200"></a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="jobs.html" aria-current="page">Jobs</a></li>
-                <li><a href="apply.html">Apply</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php
+    $page = "jobs";
+    require_once("header.inc"); 
+    ?>
 
     <main>
         <section class="page-intro">
@@ -45,10 +38,13 @@
             <aside class="side-note" aria-labelledby="eeo-title">
                 <p class="eyebrow">Our commitment</p>
                 <h2 id="eeo-title">Inclusive employment</h2>
-                <p>DTShop encourages applications from Aboriginal and Torres Strait Islander peoples, people with disability, and people of
-                all backgrounds.</p>
-                <p>Why we say this: First Nations peoples have cared for Country and shared knowledge for tens of thousands of years. We
-                want that way of thinking, especially around community, access and design, to shape the technology we build.</p>
+                <p>DTShop encourages applications from Aboriginal and Torres Strait Islander peoples, people with
+                    disability, and people of
+                    all backgrounds.</p>
+                <p>Why we say this: First Nations peoples have cared for Country and shared knowledge for tens of
+                    thousands of years. We
+                    want that way of thinking, especially around community, access and design, to shape the technology
+                    we build.</p>
                 <p>If you need adjustments during recruitment, tell us and we will arrange them.</p>
                 <p><a href="mailto:careers@dtshop.vn">Email careers@dtshop.vn</a></p>
             </aside>
@@ -170,16 +166,17 @@
                     </section>
 
                     <p class="button"><a href="apply.html">Apply for Job</a></p>
-                </article>   
+                </article>
 
                 <article class="job" id="B1">
                     <header class="job-header">
                         <p class="ref">Ref: BE001</p>
                         <h2 id="backend-title">Back-End Developer</h2>
                     </header>
-                
-                    <p>Build the server-side systems behind DTShop, from product catalogue and search to orders and payments.</p>
-                
+
+                    <p>Build the server-side systems behind DTShop, from product catalogue and search to orders and
+                        payments.</p>
+
                     <dl class="job-meta">
                         <div>
                             <dt>Salary</dt>
@@ -194,7 +191,7 @@
                             <dd>Ho Chi Minh City, hybrid</dd>
                         </div>
                     </dl>
-                
+
                     <section>
                         <h3>Key responsibilities</h3>
                         <ul>
@@ -204,7 +201,7 @@
                             <li>Monitor system uptime, fix production issues and write automated tests.</li>
                         </ul>
                     </section>
-                
+
                     <section class="job-columns">
                         <div>
                             <h3>Skills requirements</h3>
@@ -212,7 +209,8 @@
                                 <li>Experience with a server-side language such as Python, PHP, Node.js or Java.</li>
                                 <li>Solid SQL and relational database design (MySQL or PostgreSQL).</li>
                                 <li>Experience building and consuming REST APIs.</li>
-                                <li>Understanding of web security basics, including authentication and input validation.</li>
+                                <li>Understanding of web security basics, including authentication and input validation.
+                                </li>
                             </ul>
                         </div>
                         <div>
@@ -224,7 +222,7 @@
                             </ul>
                         </div>
                     </section>
-                
+
                     <p class="button"><a href="apply.html">Apply for Job</a></p>
                 </article>
 
@@ -233,7 +231,7 @@
                     <p class="eyebrow">Hiring process</p>
                     <h2 id="process-title">How we hire</h2>
                     <p class="hire-intro">Five steps from application to offer.</p>
-                
+
                     <ol class="steps">
                         <li>
                             <h3>Apply online</h3>
@@ -256,47 +254,28 @@
                             <p>Successful applicants receive an offer by email.</p>
                         </li>
                     </ol>
-                
+
                     <p><a class="button" href="apply.html">Start your application</a></p>
                 </section>
             </div>
+            <section class="box">
+                <p class="eyebrow">Search</p>
+                <form action="jobs.php" method="get">
+                    <label for="job-select">Search jobs:</label>
+                    <select id="job-select" name="job" class="search-select">
+                        <option value="" disabled selected>Click to select a job</option>
+                        <option value="#F1">Front-End Web Developer</option>
+                        <option value="#U1">UX Designer</option>
+                        <option value="#B1">Back-End Developer</option>
+                    </select>
+
+                    <button type="submit" style="margin-top: 10px;">Search</button>
+                </form>
+            </section>
         </div>
     </main>
 
-    <footer>
-        <div class="footer-columns">
-
-            <section>
-                <h2>DTShop</h2>
-                <p>Digital Tech Components<br>Professional Technology Store</p>
-            </section>
-
-            <section>
-                <h2>Quick Links</h2>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="jobs.html">Jobs</a></li>
-                    <li><a href="apply.html">Apply</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Project Links</h2>
-                <ul>
-                    <li><a href="https://cos10026wilsondoan.atlassian.net/jira/software/projects/SCRUM/boards/1"
-                            title="Jira project">Jira project</a></li>
-                    <li><a href="https://github.com/reynard-2007/COS10026" title="GitHub repository">GitHub
-                            repository</a></li>
-                    <li><a href="https://reynard-2007.github.io/Wilsons_Dream_Team/"
-                            title="Live website on GitHub Pages">Live website</a></li>
-                    <li><a href="mailto:careers@dtshop.vn" title="Email DTShop">Email DTShop: careers@dtshop.vn</a></li>
-                </ul>
-            </section>
-
-        </div>
-        <p class="copyright">&copy; 2026 DTShop</p>
-    </footer>
+    <?php require_once("footer.inc"); ?>
 
 </body>
 
