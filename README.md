@@ -7,7 +7,7 @@ A static recruitment website for **DTShop**, an online retail platform expanding
 
 Built for the group project, industry allocation **G05: E-Commerce & Digital Retail Platform**.
 
-- **Live site:** https://reynard-2007.github.io/Wilsons_Dream_Team/
+- **Live site:** https://yukihuynh.github.io/Wilsons_Dream_Team--Project-2/
 - **Jira project:** https://cos10026wilsondoan.atlassian.net/jira/software/projects/SCRUM/boards/1
 - **GitHub repository:** https://github.com/reynard-2007/Wilsons_Dream_Team.git
 
