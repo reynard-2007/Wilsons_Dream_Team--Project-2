@@ -32,8 +32,8 @@
     $result = false;
     $total = 0;
 
-    if ($conn) {
-        $result = mysqli_query($conn, "SELECT * FROM jobs ORDER BY job_ref");
+    if ($conn) { // Read all jobs to count them and display them
+        $result = mysqli_query($conn, "SELECT * FROM jobs ORDER BY job_ref"); // Read all jobs to count them and display them
         if ($result) {
             $total = mysqli_num_rows($result);
         }
@@ -85,7 +85,7 @@
 
             <div class="jobs-content">
 
-                <?php
+                <?php    // Display the jobs or a message if there are none
                 if (!$conn) {
                     echo "<p>Jobs are unavailable right now. Please try again later.</p>";
                 } elseif (!$result) {
@@ -137,7 +137,7 @@
         </div>
     </main>
 
-    <?php require_once __DIR__ . "/footer.inc"; ?>
+    <?php require_once __DIR__ . "/inc/footer.inc"; ?>
 
 </body>
 

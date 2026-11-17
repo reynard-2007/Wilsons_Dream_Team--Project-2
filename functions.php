@@ -1,28 +1,13 @@
 <?php
 /*
-filename: functions.inc
+filename: functions.php
 author: Wilson's Dream Team
-description: Shared helpers for DTShop (database, sanitising, sessions, table setup)
+description: Small helper functions shared by many pages.
+             A page loads this file with:  require_once __DIR__ . "/functions.php";
 */
 
+// Database name, user and password (see settings.php)
 require_once __DIR__ . "/settings.php";
-
-/* Fallbacks in case the mbstring extension is switched off on the server */
-if (!function_exists("mb_strlen")) {
-    function mb_strlen($s)
-    {
-        return preg_match_all('/./us', (string)$s, $m);
-    }
-}
-if (!function_exists("mb_substr")) {
-    function mb_substr($s, $start, $length = null)
-    {
-        preg_match_all('/./us', (string)$s, $m);
-        return implode("", array_slice($m[0], $start, $length));
-    }
-}
-
-/* ---------- Database ---------- */
 
 function db_connect()
 {
@@ -30,61 +15,50 @@ function db_connect()
     mysqli_report(MYSQLI_REPORT_OFF);
     $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     if ($conn) {
-        mysqli_set_charset($conn, "utf8mb4");
+        mysqli_set_charset($conn, "utf8mb4");   // so Vietnamese letters are saved correctly
     }
     return $conn;
 }
 
-/* Create the eoi table if it does not exist yet (status defaults to New) */
-function create_eoi_table($conn)
-{
-    $sql = "CREATE TABLE IF NOT EXISTS eoi (
-        EOInumber INT AUTO_INCREMENT PRIMARY KEY,
-        job_ref VARCHAR(5) NOT NULL,
-        first_name VARCHAR(25) NOT NULL,
-        last_name VARCHAR(25) NOT NULL,
-        nickname VARCHAR(20) NOT NULL,
-        dob DATE NOT NULL,
-        gender VARCHAR(10) NOT NULL,
-        email VARCHAR(100) NOT NULL,
-        phone VARCHAR(12) NOT NULL,
-        street_address VARCHAR(40) NOT NULL,
-        ward VARCHAR(40) NOT NULL,
-        province VARCHAR(30) NOT NULL,
-        postcode CHAR(5) NOT NULL,
-        skills VARCHAR(255) NOT NULL,
-        other_skills TEXT,
-        status ENUM('New','Current','Final') NOT NULL DEFAULT 'New'
-    ) DEFAULT CHARSET=utf8mb4";
-    return mysqli_query($conn, $sql);
-}
+/* ============================================================
+   2. CLEANING INPUT AND SAFE OUTPUT
+   ============================================================ */
 
-/* ---------- Sanitising and output ---------- */
-
-/* Trim and strip slashes. HTML is escaped on output with e(). */
+// Clean text typed by a user: remove spaces at both ends and extra backslashes.
 function clean_input($data)
 {
-    return stripslashes(trim($data));
+    $data = trim($data);
+    $data = stripslashes($data);
+    return $data;
 }
 
-/* Escape a value for HTML output */
+// Make text safe to print in HTML (turns < into &lt; and so on).
+// Use it every time you echo something that came from a user or the database.
 function e($data)
 {
     return htmlspecialchars((string)$data, ENT_QUOTES, "UTF-8");
 }
 
-/* Turn a TEXT column (one item per line) into <li> items */
+
+/* ============================================================
+   3. SHOWING JOBS (used by jobs.php and search.php)
+   ============================================================ */
+
+// The database keeps a list as text with one item per line.
+// This prints each line as <li>item</li>.
 function render_list($text)
 {
-    foreach (preg_split('/\r\n|\r|\n/', trim($text)) as $item) {
-        $item = trim($item);
-        if ($item !== "") {
-            echo "<li>" . e($item) . "</li>\n";
+    $lines = explode("\n", $text);
+
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if ($line != "") {
+            echo "<li>" . e($line) . "</li>\n";
         }
     }
 }
 
-/* Print one job card from a row of the jobs table (used by jobs.php and search.php) */
+// Print one job card. $row is one row of the jobs table.
 function render_job($row)
 {
     $ref = e($row["job_ref"]);
@@ -134,50 +108,7 @@ function render_job($row)
         </div>
     </section>
 
-    <p class="button"><a href="apply.php?job=<?php echo urlencode($row["job_ref"]); ?>">Apply for Job</a></p>
+    <p class="button"><a href="apply.php?job=<?php echo e($row["job_ref"]); ?>">Apply for Job</a></p>
 </article>
 <?php
 }
-
-/* ---------- Sessions and CSRF ---------- */
-
-function start_session()
-{
-    if (session_status() === PHP_SESSION_NONE) {
-        ini_set("session.cookie_httponly", "1");
-        session_start();
-    }
-}
-
-function csrf_token()
-{
-    if (empty($_SESSION["csrf"])) {
-        $_SESSION["csrf"] = bin2hex(random_bytes(32));
-    }
-    return $_SESSION["csrf"];
-}
-
-function csrf_valid($token)
-{
-    return is_string($token) && !empty($_SESSION["csrf"]) && hash_equals($_SESSION["csrf"], $token);
-}
-
-/* ---------- Form option lists (shared by apply.php and process_eoi.php) ---------- */
-
-$skill_options = ["HTML", "CSS", "JavaScript", "React", "PHP", "Node.js", "SQL", "Git"];
-
-$provinces = [
-    "An Giang" => "An Giang", "Bac Ninh" => "Bắc Ninh", "Ca Mau" => "Cà Mau",
-    "Can Tho" => "Cần Thơ", "Cao Bang" => "Cao Bằng", "Da Nang" => "Đà Nẵng",
-    "Dak Lak" => "Đắk Lắk", "Dien Bien" => "Điện Biên", "Dong Nai" => "Đồng Nai",
-    "Dong Thap" => "Đồng Tháp", "Gia Lai" => "Gia Lai", "Ha Noi" => "Hà Nội",
-    "Ha Tinh" => "Hà Tĩnh", "Hai Phong" => "Hải Phòng", "Ho Chi Minh" => "Hồ Chí Minh",
-    "Hue" => "Huế", "Hung Yen" => "Hưng Yên", "Khanh Hoa" => "Khánh Hòa",
-    "Lai Chau" => "Lai Châu", "Lam Dong" => "Lâm Đồng", "Lang Son" => "Lạng Sơn",
-    "Lao Cai" => "Lào Cai", "Nghe An" => "Nghệ An", "Ninh Binh" => "Ninh Bình",
-    "Phu Tho" => "Phú Thọ", "Quang Ngai" => "Quảng Ngãi", "Quang Ninh" => "Quảng Ninh",
-    "Quang Tri" => "Quảng Trị", "Son La" => "Sơn La", "Tay Ninh" => "Tây Ninh",
-    "Thai Nguyen" => "Thái Nguyên", "Thanh Hoa" => "Thanh Hóa", "Tuyen Quang" => "Tuyên Quang",
-    "Vinh Long" => "Vĩnh Long"
-];
-?>
