@@ -127,7 +127,7 @@
 
     </main>
 
-    <?php require_once("footer.inc"); ?>
+    <?php require_once __DIR__ . "/inc/footer.inc"; ?>
 </body>
 
 </html>
