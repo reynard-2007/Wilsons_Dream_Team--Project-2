@@ -1,14 +1,12 @@
-<style>
-    .slogan {
-        color: #00f2fe;
-        font-size: 24px;
-        font-weight: bold;
-    }
-</style>
 <?php
 $page = "home";
+$title = "DTShop - Home";
+$description = "DTShop. A PC components store. Join our web and user experience team.";
+$embedded_css = ".slogan { color: #00f2fe; font-size: 24px; font-weight: bold; }";
 require_once("header.inc");
 ?>
+
+
 <main>
     <section class="top-section">
         <article class="intro-text">
