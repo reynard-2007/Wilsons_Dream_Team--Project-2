@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 18, 2026 lúc 05:58 AM
+-- Thời gian đã tạo: Th10 18, 2026 lúc 08:44 AM
 -- Phiên bản máy phục vụ: 10.11.16-MariaDB
 -- Phiên bản PHP: 8.4.27
 
@@ -52,7 +52,7 @@ CREATE TABLE `eoi` (
 
 INSERT INTO `eoi` (`EOInumber`, `job_ref`, `first_name`, `last_name`, `nickname`, `dob`, `gender`, `email`, `phone`, `street_address`, `Ward`, `province_city`, `postcode`, `skills`, `other_skills`, `status`) VALUES
 (1, 'FE001', 'John', 'Smith', 'Johnny', '15/08/2004', 'Male', 'john.smith@example.com', '0912345678', '123 Nguyen Trai', 'Ben Thanh', 'Ho Chi Minh', '70000', 'HTML, CSS, PHP', 'Python', 'New'),
-(2, 'UX001', 'Anh', 'Nguyen', 'Tiger', '12/10/2008', 'Male', 'dinhanhn630@gmail.com', '0962937979', 'số 1 Trần Văn Danh', 'Tân Bình', 'Ho Chi Minh', '70000', 'HTML, CSS, PHP, SQL', 'Python', 'New');
+(2, 'UX001', 'Anh', 'Nguyen', 'Tiger', '12/11/1999', 'Male', 'anhnguyen630@gmail.com', '0963980909', 'phạm văn bạch', 'Tân Bình', 'Ho Chi Minh', '70000', 'HTML, CSS, PHP, SQL', 'Python', 'New');
 
 --
 -- Chỉ mục cho các bảng đã đổ
