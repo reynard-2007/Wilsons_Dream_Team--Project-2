@@ -31,10 +31,9 @@ $other_skills = clean_input($_POST["other_skills"] ?? "");
 // Convert skills array into a string
 $skills_array = $_POST["skills"] ?? [];
 $skills = "";
+$valid_skill_values = true;
 
 if (is_array($skills_array)) {
-    $valid_skill_values = true;
-
     foreach ($skills_array as $skill) {
         if (!is_string($skill)) {
             $valid_skill_values = false;
@@ -170,9 +169,6 @@ if (!$conn) {
 mysqli_set_charset($conn, "utf8mb4");
 
 // Validate job reference using jobs table
-// IMPORTANT: The jobs table must already exist.
-// Change "job_ref" if your jobs table uses another column name.
-
 if ($job_ref != "" &&
     preg_match("/^[A-Za-z0-9]{5}$/", $job_ref)) {
 
@@ -205,7 +201,7 @@ if ($errors != "") {
     $title = "Application Errors";
     $description = "View errors in your job application.";
 
-    require_once("header.inc");
+    require_once("inc/header.inc");
 
     echo "<main>";
     echo "<h1>Application Errors</h1>";
@@ -213,7 +209,7 @@ if ($errors != "") {
     echo '<a href="apply.php">Back to Application</a>';
     echo "</main>";
 
-    require_once("footer.inc");
+    require_once("inc/footer.inc");
     exit();
 }
 
@@ -302,7 +298,7 @@ if ($success) {
     $description = "Your job application could not be submitted.";
 }
 
-require_once("header.inc");
+require_once("inc/header.inc");
 
 echo "<main>";
 
@@ -319,5 +315,5 @@ echo '<a href="apply.php">Back to Application</a>';
 
 echo "</main>";
 
-require_once("footer.inc");
+require_once("inc/footer.inc");
 ?>
