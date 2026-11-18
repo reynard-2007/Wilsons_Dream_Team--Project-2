@@ -49,7 +49,7 @@ if (is_array($skills_array)) {
 // (c) Validate data
 $errors = "";
 
-// Validate job reference format
+// Validate job reference
 if ($job_ref == "") {
     $errors .= "<li>Job reference is required.</li>";
 } elseif (!preg_match("/^[A-Za-z0-9]{5}$/", $job_ref)) {
@@ -157,46 +157,8 @@ if (!is_array($skills_array) || !$valid_skill_values) {
     }
 }
 
-// (d) Connect to database
-require_once("settings.php");
-
-$conn = mysqli_connect($host, $user, $pwd, $sql_db);
-
-if (!$conn) {
-    die("Database connection failed.");
-}
-
-mysqli_set_charset($conn, "utf8mb4");
-
-// Validate job reference using jobs table
-if ($job_ref != "" &&
-    preg_match("/^[A-Za-z0-9]{5}$/", $job_ref)) {
-
-    $sql_job = "SELECT 1 FROM jobs WHERE job_ref = ? LIMIT 1";
-
-    $stmt_job = mysqli_prepare($conn, $sql_job);
-
-    if (!$stmt_job) {
-        error_log("Job reference query preparation failed.");
-        mysqli_close($conn);
-        die("Unable to validate job reference.");
-    }
-
-    mysqli_stmt_bind_param($stmt_job, "s", $job_ref);
-    mysqli_stmt_execute($stmt_job);
-    mysqli_stmt_store_result($stmt_job);
-
-    if (mysqli_stmt_num_rows($stmt_job) == 0) {
-        $errors .= "<li>Invalid job reference.</li>";
-    }
-
-    mysqli_stmt_close($stmt_job);
-}
-
 // Stop if validation fails
 if ($errors != "") {
-    mysqli_close($conn);
-
     $page = "apply";
     $title = "Application Errors";
     $description = "View errors in your job application.";
@@ -213,7 +175,18 @@ if ($errors != "") {
     exit();
 }
 
-// Create table if it does not exist
+// (d) Connect to database
+require_once("settings.php");
+
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+if (!$conn) {
+    die("Database connection failed.");
+}
+
+mysqli_set_charset($conn, "utf8mb4");
+
+// Create eoi table if it does not exist
 $sql_create = "CREATE TABLE IF NOT EXISTS eoi (
     EOInumber INT AUTO_INCREMENT PRIMARY KEY,
     job_ref VARCHAR(5) NOT NULL,
@@ -240,7 +213,7 @@ if (!mysqli_query($conn, $sql_create)) {
     die("Unable to prepare the application database.");
 }
 
-// (e) Insert application into database
+// (e) Insert application into eoi table
 $sql = "INSERT INTO eoi (
     job_ref, first_name, last_name, nickname,
     dob, gender, email, phone,
