@@ -1,282 +1,262 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$page = "jobs";
+require_once("header.inc"); 
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DTShop current vacancies: Front-End Web Developer and UX Designer roles.">
-    <meta name="keywords" content="DTShop, jobs, front-end developer, UX designer, COS10026, Project Part 1">
-    <meta name="author" content="Wilson's Dream Team">
-
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="stylesheet" href="styles/styles.css">
-    <title>DTShop - Jobs</title>
-</head>
-
-<body>
-    <?php
-    $page = "jobs";
-    require_once("header.inc"); 
-    ?>
-
-    <main>
-        <section class="page-intro">
-            <p class="eyebrow">Now hiring &middot; 3 open roles</p>
-            <h1>Current vacancies</h1>
-            <p>
-                DTShop is growing its web and user experience team. Two roles are open for 2026. Both are based in
-                Ho Chi Minh City with hybrid working.
-            </p>
-            <nav class="jump-links" aria-label="Jump to a job">
-                <a class="button" href="#F1">Front-End Web Developer</a>
-                <a class="button" href="#U1">UX Designer</a>
-                <a class="button" href="#B1">Back-End Developer</a>
-            </nav>
-        </section>
-        <br>
-        <div class="jobs-layout">
-            <aside class="side-note" aria-labelledby="eeo-title">
-                <p class="eyebrow">Our commitment</p>
-                <h2 id="eeo-title">Inclusive employment</h2>
-                <p>DTShop encourages applications from Aboriginal and Torres Strait Islander peoples, people with
-                    disability, and people of
-                    all backgrounds.</p>
-                <p>Why we say this: First Nations peoples have cared for Country and shared knowledge for tens of
-                    thousands of years. We
-                    want that way of thinking, especially around community, access and design, to shape the technology
-                    we build.</p>
-                <p>If you need adjustments during recruitment, tell us and we will arrange them.</p>
-                <p><a href="mailto:careers@dtshop.vn">Email careers@dtshop.vn</a></p>
-            </aside>
+<main>
+    <section class="page-intro">
+        <p class="eyebrow">Now hiring &middot; 3 open roles</p>
+        <h1>Current vacancies</h1>
+        <p>
+            DTShop is growing its web and user experience team. Two roles are open for 2026. Both are based in
+            Ho Chi Minh City with hybrid working.
+        </p>
+        <nav class="jump-links" aria-label="Jump to a job">
+            <a class="button" href="#F1">Front-End Web Developer</a>
+            <a class="button" href="#U1">UX Designer</a>
+            <a class="button" href="#B1">Back-End Developer</a>
+        </nav>
+    </section>
+    <br>
+    <div class="jobs-layout">
+        <aside class="side-note" aria-labelledby="eeo-title">
+            <p class="eyebrow">Our commitment</p>
+            <h2 id="eeo-title">Inclusive employment</h2>
+            <p>DTShop encourages applications from Aboriginal and Torres Strait Islander peoples, people with
+                disability, and people of
+                all backgrounds.</p>
+            <p>Why we say this: First Nations peoples have cared for Country and shared knowledge for tens of
+                thousands of years. We
+                want that way of thinking, especially around community, access and design, to shape the technology
+                we build.</p>
+            <p>If you need adjustments during recruitment, tell us and we will arrange them.</p>
+            <p><a href="mailto:careers@dtshop.vn">Email careers@dtshop.vn</a></p>
+        </aside>
 
 
-            <div class="jobs-content">
+        <div class="jobs-content">
 
-                <article class="job" id='F1'>
-                    <header class="job-header">
-                        <p class="ref">Ref: FE001</p>
-                        <h2 id="fe-title">Front-End Web Developer</h2>
-                    </header>
+            <article class="job" id='F1'>
+                <header class="job-header">
+                    <p class="ref">Ref: FE001</p>
+                    <h2 id="fe-title">Front-End Web Developer</h2>
+                </header>
 
-                    <p>Build and improve the product listing pages, search and checkout screens that thousands of
-                        PC builders use every day.</p>
+                <p>Build and improve the product listing pages, search and checkout screens that thousands of
+                    PC builders use every day.</p>
 
-                    <dl class="job-meta">
-                        <div>
-                            <dt>Salary</dt>
-                            <dd class="salary">AUD $80,000-$95,000 per year</dd>
-                        </div>
-                        <div>
-                            <dt>Reports to</dt>
-                            <dd>Head of Digital Engineering</dd>
-                        </div>
-                        <div>
-                            <dt>Location</dt>
-                            <dd>Ho Chi Minh City, hybrid</dd>
-                        </div>
-                    </dl>
+                <dl class="job-meta">
+                    <div>
+                        <dt>Salary</dt>
+                        <dd class="salary">AUD $80,000-$95,000 per year</dd>
+                    </div>
+                    <div>
+                        <dt>Reports to</dt>
+                        <dd>Head of Digital Engineering</dd>
+                    </div>
+                    <div>
+                        <dt>Location</dt>
+                        <dd>Ho Chi Minh City, hybrid</dd>
+                    </div>
+                </dl>
 
-                    <section>
-                        <h3>Key responsibilities</h3>
-                        <ul>
-                            <li>Develop responsive product listing and product detail pages in HTML5, CSS3 and
-                                JavaScript.</li>
-                            <li>Turn UX designs into accessible, fast-loading interfaces.</li>
-                            <li>Improve page speed and Core Web Vitals scores across the store.</li>
-                            <li>Review code with teammates and fix defects found in testing.</li>
-                        </ul>
-                    </section>
-
-                    <section class="job-columns">
-                        <div>
-                            <h3>Skill requirements</h3>
-                            <ul>
-                                <li>Strong HTML5 and CSS3, including Flexbox and Grid.</li>
-                                <li>Working knowledge of JavaScript.</li>
-                                <li>Understanding of WCAG accessibility standards.</li>
-                                <li>Experience using Git and GitHub.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3>Preferable requirements</h3>
-                            <ul>
-                                <li>Experience with an e-commerce platform.</li>
-                                <li>Familiarity with a front-end framework such as React.</li>
-                                <li>Basic knowledge of SEO and web analytics.</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <p class="button"><a href="apply.html">Apply for Job</a></p>
-                </article>
-
-                <article class="job" id='U1'>
-                    <header class="job-header">
-                        <p class="ref">Ref: UX001</p>
-                        <h2 id="ux-title">UX Designer</h2>
-                    </header>
-
-                    <p>Shape how customers find, compare and buy PC components, from first search to final
-                        checkout.</p>
-
-                    <dl class="job-meta">
-                        <div>
-                            <dt>Salary</dt>
-                            <dd class="salary">AUD $75,000-$90,000 per year</dd>
-                        </div>
-                        <div>
-                            <dt>Reports to</dt>
-                            <dd>Head of Digital Experience</dd>
-                        </div>
-                        <div>
-                            <dt>Location</dt>
-                            <dd>Ho Chi Minh City, hybrid</dd>
-                        </div>
-                    </dl>
-
-
-                    <section>
-                        <h3>Key responsibilities</h3>
-                        <ul>
-                            <li>Run user research and usability tests on shopping and checkout flows.</li>
-                            <li>Create wireframes, prototypes and design specifications for developers.</li>
-                            <li>Maintain the DTShop design system and component library.</li>
-                            <li>Work with developers to check designs are built as intended.</li>
-                        </ul>
-                    </section>
-
-                    <section class="job-columns">
-                        <div>
-                            <h3>Skills requirements</h3>
-                            <ul>
-                                <li>Portfolio showing user-centred design work.</li>
-                                <li>Proficiency in Figma or a similar design tool.</li>
-                                <li>Knowledge of accessible design and colour contrast.</li>
-                                <li>Clear communication with technical and non-technical colleagues.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3>Preferable requirements</h3>
-                            <ul>
-                                <li>Experience designing for online retail.</li>
-                                <li>Basic HTML and CSS knowledge.</li>
-                                <li>Experience running A/B tests.</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <p class="button"><a href="apply.html">Apply for Job</a></p>
-                </article>
-
-                <article class="job" id="B1">
-                    <header class="job-header">
-                        <p class="ref">Ref: BE001</p>
-                        <h2 id="backend-title">Back-End Developer</h2>
-                    </header>
-
-                    <p>Build the server-side systems behind DTShop, from product catalogue and search to orders and
-                        payments.</p>
-
-                    <dl class="job-meta">
-                        <div>
-                            <dt>Salary</dt>
-                            <dd class="salary">AUD $85,000-$100,000 per year</dd>
-                        </div>
-                        <div>
-                            <dt>Reports to</dt>
-                            <dd>Head of Digital Engineering</dd>
-                        </div>
-                        <div>
-                            <dt>Location</dt>
-                            <dd>Ho Chi Minh City, hybrid</dd>
-                        </div>
-                    </dl>
-
-                    <section>
-                        <h3>Key responsibilities</h3>
-                        <ul>
-                            <li>Design and maintain APIs for product listings, search, cart and checkout.</li>
-                            <li>Manage the product, customer and order databases, including query performance.</li>
-                            <li>Integrate payment, shipping and inventory services securely.</li>
-                            <li>Monitor system uptime, fix production issues and write automated tests.</li>
-                        </ul>
-                    </section>
-
-                    <section class="job-columns">
-                        <div>
-                            <h3>Skills requirements</h3>
-                            <ul>
-                                <li>Experience with a server-side language such as Python, PHP, Node.js or Java.</li>
-                                <li>Solid SQL and relational database design (MySQL or PostgreSQL).</li>
-                                <li>Experience building and consuming REST APIs.</li>
-                                <li>Understanding of web security basics, including authentication and input validation.
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3>Preferable requirements</h3>
-                            <ul>
-                                <li>Experience with an e-commerce platform or payment gateway.</li>
-                                <li>Familiarity with cloud hosting and Docker.</li>
-                                <li>Experience with caching tools such as Redis.</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <p class="button"><a href="apply.html">Apply for Job</a></p>
-                </article>
-
-
-                <section class="box" aria-labelledby="process-title">
-                    <p class="eyebrow">Hiring process</p>
-                    <h2 id="process-title">How we hire</h2>
-                    <p class="hire-intro">Five steps from application to offer.</p>
-
-                    <ol class="steps">
-                        <li>
-                            <h3>Apply online</h3>
-                            <p>Submit the application form with the job reference number.</p>
-                        </li>
-                        <li>
-                            <h3>Application review</h3>
-                            <p>We review applications within two weeks.</p>
-                        </li>
-                        <li>
-                            <h3>Practical task</h3>
-                            <p>Shortlisted applicants complete a short practical task.</p>
-                        </li>
-                        <li>
-                            <h3>Final interview</h3>
-                            <p>Meet the hiring manager and a team member.</p>
-                        </li>
-                        <li>
-                            <h3>Offer</h3>
-                            <p>Successful applicants receive an offer by email.</p>
-                        </li>
-                    </ol>
-
-                    <p><a class="button" href="apply.html">Start your application</a></p>
+                <section>
+                    <h3>Key responsibilities</h3>
+                    <ul>
+                        <li>Develop responsive product listing and product detail pages in HTML5, CSS3 and
+                            JavaScript.</li>
+                        <li>Turn UX designs into accessible, fast-loading interfaces.</li>
+                        <li>Improve page speed and Core Web Vitals scores across the store.</li>
+                        <li>Review code with teammates and fix defects found in testing.</li>
+                    </ul>
                 </section>
-            </div>
-            <section class="box">
-                <p class="eyebrow">Search</p>
-                <form action="jobs.php" method="get">
-                    <label for="job-select">Search jobs:</label>
-                    <select id="job-select" name="job" class="search-select">
-                        <option value="" disabled selected>Click to select a job</option>
-                        <option value="#F1">Front-End Web Developer</option>
-                        <option value="#U1">UX Designer</option>
-                        <option value="#B1">Back-End Developer</option>
-                    </select>
 
-                    <button type="submit" style="margin-top: 10px;">Search</button>
-                </form>
+                <section class="job-columns">
+                    <div>
+                        <h3>Skill requirements</h3>
+                        <ul>
+                            <li>Strong HTML5 and CSS3, including Flexbox and Grid.</li>
+                            <li>Working knowledge of JavaScript.</li>
+                            <li>Understanding of WCAG accessibility standards.</li>
+                            <li>Experience using Git and GitHub.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Preferable requirements</h3>
+                        <ul>
+                            <li>Experience with an e-commerce platform.</li>
+                            <li>Familiarity with a front-end framework such as React.</li>
+                            <li>Basic knowledge of SEO and web analytics.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <p class="button"><a href="apply.html">Apply for Job</a></p>
+            </article>
+
+            <article class="job" id='U1'>
+                <header class="job-header">
+                    <p class="ref">Ref: UX001</p>
+                    <h2 id="ux-title">UX Designer</h2>
+                </header>
+
+                <p>Shape how customers find, compare and buy PC components, from first search to final
+                    checkout.</p>
+
+                <dl class="job-meta">
+                    <div>
+                        <dt>Salary</dt>
+                        <dd class="salary">AUD $75,000-$90,000 per year</dd>
+                    </div>
+                    <div>
+                        <dt>Reports to</dt>
+                        <dd>Head of Digital Experience</dd>
+                    </div>
+                    <div>
+                        <dt>Location</dt>
+                        <dd>Ho Chi Minh City, hybrid</dd>
+                    </div>
+                </dl>
+
+
+                <section>
+                    <h3>Key responsibilities</h3>
+                    <ul>
+                        <li>Run user research and usability tests on shopping and checkout flows.</li>
+                        <li>Create wireframes, prototypes and design specifications for developers.</li>
+                        <li>Maintain the DTShop design system and component library.</li>
+                        <li>Work with developers to check designs are built as intended.</li>
+                    </ul>
+                </section>
+
+                <section class="job-columns">
+                    <div>
+                        <h3>Skills requirements</h3>
+                        <ul>
+                            <li>Portfolio showing user-centred design work.</li>
+                            <li>Proficiency in Figma or a similar design tool.</li>
+                            <li>Knowledge of accessible design and colour contrast.</li>
+                            <li>Clear communication with technical and non-technical colleagues.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Preferable requirements</h3>
+                        <ul>
+                            <li>Experience designing for online retail.</li>
+                            <li>Basic HTML and CSS knowledge.</li>
+                            <li>Experience running A/B tests.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <p class="button"><a href="apply.html">Apply for Job</a></p>
+            </article>
+
+            <article class="job" id="B1">
+                <header class="job-header">
+                    <p class="ref">Ref: BE001</p>
+                    <h2 id="backend-title">Back-End Developer</h2>
+                </header>
+
+                <p>Build the server-side systems behind DTShop, from product catalogue and search to orders and
+                    payments.</p>
+
+                <dl class="job-meta">
+                    <div>
+                        <dt>Salary</dt>
+                        <dd class="salary">AUD $85,000-$100,000 per year</dd>
+                    </div>
+                    <div>
+                        <dt>Reports to</dt>
+                        <dd>Head of Digital Engineering</dd>
+                    </div>
+                    <div>
+                        <dt>Location</dt>
+                        <dd>Ho Chi Minh City, hybrid</dd>
+                    </div>
+                </dl>
+
+                <section>
+                    <h3>Key responsibilities</h3>
+                    <ul>
+                        <li>Design and maintain APIs for product listings, search, cart and checkout.</li>
+                        <li>Manage the product, customer and order databases, including query performance.</li>
+                        <li>Integrate payment, shipping and inventory services securely.</li>
+                        <li>Monitor system uptime, fix production issues and write automated tests.</li>
+                    </ul>
+                </section>
+
+                <section class="job-columns">
+                    <div>
+                        <h3>Skills requirements</h3>
+                        <ul>
+                            <li>Experience with a server-side language such as Python, PHP, Node.js or Java.</li>
+                            <li>Solid SQL and relational database design (MySQL or PostgreSQL).</li>
+                            <li>Experience building and consuming REST APIs.</li>
+                            <li>Understanding of web security basics, including authentication and input validation.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Preferable requirements</h3>
+                        <ul>
+                            <li>Experience with an e-commerce platform or payment gateway.</li>
+                            <li>Familiarity with cloud hosting and Docker.</li>
+                            <li>Experience with caching tools such as Redis.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <p class="button"><a href="apply.html">Apply for Job</a></p>
+            </article>
+
+
+            <section class="box" aria-labelledby="process-title">
+                <p class="eyebrow">Hiring process</p>
+                <h2 id="process-title">How we hire</h2>
+                <p class="hire-intro">Five steps from application to offer.</p>
+
+                <ol class="steps">
+                    <li>
+                        <h3>Apply online</h3>
+                        <p>Submit the application form with the job reference number.</p>
+                    </li>
+                    <li>
+                        <h3>Application review</h3>
+                        <p>We review applications within two weeks.</p>
+                    </li>
+                    <li>
+                        <h3>Practical task</h3>
+                        <p>Shortlisted applicants complete a short practical task.</p>
+                    </li>
+                    <li>
+                        <h3>Final interview</h3>
+                        <p>Meet the hiring manager and a team member.</p>
+                    </li>
+                    <li>
+                        <h3>Offer</h3>
+                        <p>Successful applicants receive an offer by email.</p>
+                    </li>
+                </ol>
+
+                <p><a class="button" href="apply.html">Start your application</a></p>
             </section>
         </div>
-    </main>
+        <section class="box">
+            <p class="eyebrow">Search</p>
+            <form action="jobs.php" method="get">
+                <label for="job-select">Search jobs:</label>
+                <select id="job-select" name="job" class="search-select">
+                    <option value="" disabled selected>Click to select a job</option>
+                    <option value="#F1">Front-End Web Developer</option>
+                    <option value="#U1">UX Designer</option>
+                    <option value="#B1">Back-End Developer</option>
+                </select>
 
-    <?php require_once("footer.inc"); ?>
+                <button type="submit" style="margin-top: 10px;">Search</button>
+            </form>
+        </section>
+    </div>
+</main>
 
-</body>
-
-</html>
+<?php require_once("footer.inc"); ?>
