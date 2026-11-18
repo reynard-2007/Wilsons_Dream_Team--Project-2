@@ -149,3 +149,24 @@ Understanding of web security basics, including authentication and input validat
  'Experience with an e-commerce platform or payment gateway.
 Familiarity with cloud hosting and Docker.
 Experience with caching tools such as Redis.');
+
+
+-- ---------------------------------------------------------------
+-- About: team members, contributions to Project 1 and Project 2, quotes
+-- ---------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS about (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    student_id VARCHAR(20) NOT NULL,
+    role VARCHAR(100) NOT NULL,
+    contribution_part1 TEXT NOT NULL,
+    contribution_part2 TEXT NOT NULL,
+    quote_vi VARCHAR(255) NOT NULL,
+    quote_en VARCHAR(255) NOT NULL
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT IGNORE INTO about (id, name, student_id, role, contribution_part1, contribution_part2, quote_vi, quote_en) VALUES
+(1, 'Dao Gia Khang', '106391302', 'Team Leader', 'Responsible for validation, accessibility and final testing, and coordinating the final submission of the static website.', 'Created settings.php and the shared include files (header, nav, footer), built manage.php so managers can list, delete and update EOIs, and checked and submitted the final project.', 'Có công mài sắt, có ngày nên kim.', 'Hard work and persistence lead to success.'),
+(2, 'Huynh Phan Yuki', '106394628', 'Jira Manager', 'Managed the Jira project board, tasks and sprint planning, and built the jobs page.', 'Built jobs.php, which loads job listings from the jobs table, created the jobs table, and made search.php with the search boxes on the home and jobs pages.', 'Học đi đôi với hành.', 'Learning goes hand in hand with practice.'),
+(3, 'Nguyen Dinh Anh', '106727091', 'Aboriginal and Torres Strait Islander Content Lead', 'Responsible for the Aboriginal and Torres Strait Islander element of the project, and built the apply page and its form.', 'Built apply.php and process_eoi.php with server-side validation of every field, created the eoi table, and showed the EOI number after a successful submission.', 'Thất bại là mẹ thành công.', 'Failure is the mother of success.'),
+(4, 'Dao Ba Hung', '106726072', 'Tutor Liaison', 'Communicated with the tutor on behalf of the group, and built the about page.', 'Created the about table and about.php, which loads the member contributions from the database, and built login.php with the users table to protect the manage page.', 'Kiến tha lâu cũng đầy tổ.', 'Small efforts add up over time.');
