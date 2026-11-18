@@ -163,7 +163,7 @@ if ($errors != "") {
     $title = "Application Errors";
     $description = "View errors in your job application.";
 
-    require_once("inc/header.inc");
+    require_once __DIR__ . "/inc/header.inc";
 
     echo "<main>";
     echo "<h1>Application Errors</h1>";
@@ -171,12 +171,12 @@ if ($errors != "") {
     echo '<a href="apply.php">Back to Application</a>';
     echo "</main>";
 
-    require_once("inc/footer.inc");
+    require_once __DIR__ . "/inc/footer.inc";
     exit();
 }
 
 // (d) Connect to database
-require_once("settings.php");
+require_once __DIR__ . "/settings.php";
 
 $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
@@ -271,7 +271,7 @@ if ($success) {
     $description = "Your job application could not be submitted.";
 }
 
-require_once("inc/header.inc");
+require_once __DIR__ . "/inc/header.inc";
 
 echo "<main>";
 
@@ -288,5 +288,5 @@ echo '<a href="apply.php">Back to Application</a>';
 
 echo "</main>";
 
-require_once("inc/footer.inc");
+require_once __DIR__ . "/inc/footer.inc";
 ?>

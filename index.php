@@ -1,14 +1,11 @@
-<style>
-    .slogan {
-        color: #00f2fe;
-        font-size: 24px;
-        font-weight: bold;
-    }
-</style>
 <?php
 $page = "home";
-require_once("header.inc");
+$title = "DTShop - Home";
+$description = "DTShop. A PC components store. Join our web and user experience team.";
+$embedded_css = ".slogan { color: #00f2fe; font-size: 24px; font-weight: bold; }";
+require_once __DIR__ . "/inc/header.inc";
 ?>
+
 <main>
     <section class="top-section">
         <article class="intro-text">
@@ -91,14 +88,9 @@ require_once("header.inc");
 
         <section class="box">
             <h2>Search</h2>
-            <form action="jobs.php" method="get">
-                <label for="job-select">Search jobs:</label>
-                <select id="job-select" name="job" class="search-select">
-                    <option value="" disabled selected>Click to select a job</option>
-                    <option value="#F1">Front-End Web Developer</option>
-                    <option value="#U1">UX Designer</option>
-                    <option value="#B1">Back-End Developer</option>
-                </select>
+            <form action="search.php" method="get">
+                <label for="keyword">Search jobs:</label>
+                <input type="text" id="keyword" name="keyword" class="search-input">
 
                 <button type="submit" style="margin-top: 10px;">Search</button>
             </form>
@@ -107,6 +99,3 @@ require_once("header.inc");
     </main>
 
     <?php require_once __DIR__ . "/inc/footer.inc"; ?>
-</body>
-
-</html>

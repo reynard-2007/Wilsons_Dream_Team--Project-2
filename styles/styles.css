@@ -1,15 +1,16 @@
 
 /*
 
-filename: style.css
+filename: styles.css
 
 author: Wilson's Dream Team
 
 created: 18/10/2026
 
-last modified: 29/10/2026
+last modified: 18/11/2026
 
-description: index.html, jobs.html, apply.html, about.html
+description: Shared stylesheet for index, jobs, apply, about (Part 1)
+and process_eoi, manage, login, search (Part 2)
 
 */
 /*---------------------------------index+about---------------------------------- */
@@ -59,8 +60,8 @@ header {
 }
 
 header img {
-    width: 320px;
-    height: 100px;
+    width: 200px;
+    height: auto;
 }
 
 nav ul {
@@ -91,10 +92,17 @@ nav a[aria-current="page"] {
 
 /*page */
 
+/* Background graphic for the home page (file is in styles/images/) */
 .top-section {
     display: flex;
     justify-content: space-between;
-    padding: 40px 0;
+    padding: 40px 20px;
+    background-color: #000000;
+    background-image: url(images/bg-circuit.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
 }
 
 .intro-text {
@@ -174,7 +182,8 @@ button[type="submit"]:hover {
     margin-bottom: 30px;
 }
 
-.search-select {
+.search-select,
+.search-input {
     display: block;
     width: 100%;
     padding: 12px 15px;
@@ -184,12 +193,17 @@ button[type="submit"]:hover {
     border: 2px solid #00f2fe;
     border-radius: 8px;
     font-size: 15px;
-    outline: none;
     cursor: pointer;
+    box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.search-select:focus {
+.search-input {
+    cursor: text;
+}
+
+.search-select:focus,
+.search-input:focus {
     box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
 }
 
@@ -261,7 +275,6 @@ table tbody tr:hover td {
 .box:hover {
     border-color: #00f2fe;
     box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
-    transform: translateY(-6px);
 }
 
 
@@ -313,21 +326,12 @@ footer li {
     display: block;
     margin: 0 auto;  
 }
-table td:first-child,
-table th:first-child {
-    width: 80px;
-    max-width: 80px;
-}
-
-table td, table th {
+/* Fun facts table (about page): add class="fun-facts" to that table */
+.fun-facts td,
+.fun-facts th {
     text-align: center;
     vertical-align: middle;
     padding: 10px 8px;
-}
-
-.box table {
-    width: 100%;
-    table-layout: fixed;
 }
 
 /*---------------------------------jobs---------------------------------- */
@@ -393,22 +397,12 @@ aside.side-note {
 
 .job:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(11, 29, 58, 0.18);
-    border-color: #1e5bb8;
+    box-shadow: 0 12px 24px rgba(0, 242, 254, 0.25);
+    border-color: #00f2fe;
 }
 
 .jobs-content {
     overflow: hidden;
-}
-
-.ref {
-    margin: 0;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #000000;
-    background: cyan;
-    border-radius: 999px;
 }
 
 /* One job card */
@@ -447,10 +441,13 @@ aside.side-note {
 
 .ref {
     margin: 0;
-    background-color: Cyan;
+    color: #000000;
+    background-color: cyan;
     border: 1px solid black;
+    border-radius: 999px;
     padding: 5px 12px;
     font-size: 0.9rem;
+    font-weight: 700;
 }
 
 .job-meta {
@@ -504,10 +501,6 @@ aside.side-note {
     font-size: 200%;
 }
 
-.hire {
-    max-width: none;
-}
-
 .hire-intro {
     color: #c9d3ea;
 }
@@ -545,15 +538,11 @@ aside.side-note {
 /* Visible keyboard focus (accessibility) */
 a:focus-visible,
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
     outline: 3px solid #ffd700;
     outline-offset: 2px;
-}
-
-/* Current page link in the menu */
-nav a[aria-current="page"] {
-    color: #00f2fe;
-    border-bottom: 2px solid #00f2fe;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -561,7 +550,9 @@ nav a[aria-current="page"] {
     *,
     *::before,
     *::after {
-        scroll-behavior: auto ;
+        scroll-behavior: auto;
+        transition: none;
+        transform: none;
     }
 
 }
@@ -599,6 +590,18 @@ nav a[aria-current="page"] {
     .footer-columns section {
         width: 100%;
     }
+
+    /* jobs page: aside goes full width, grids become one column */
+    aside.side-note {
+        float: none;
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    .job-meta,
+    .job-columns {
+        grid-template-columns: 1fr;
+    }
 }
 
 /*---------------------------------apply---------------------------------- */
@@ -627,8 +630,9 @@ input, select, textarea {
     box-sizing: border-box;
 }
 
-input:not([type="radio"]):not([type="checkbox"]),
-select, textarea {
+#Job_apply input:not([type="radio"]):not([type="checkbox"]),
+#Job_apply select,
+#Job_apply textarea {
     width: 100%;
 }
 
@@ -676,4 +680,113 @@ input[type="reset"] {
     color: #374151;
 }
 /*---------------------------------about---------------------------------- */
+
+/* Student ID badge */
+.student-id {
+    display: inline-block;
+    background-color: #00f2fe;
+    color: #000000;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+/* Group photo with a border */
+.group-photo {
+    border: 3px solid #00f2fe;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 20px 0;
+    text-align: center;
+    background-color: #111827;
+}
+
+.group-photo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.group-photo figcaption {
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/*---------------------------------part 2---------------------------------- */
+
+/* Messages (process_eoi, manage, login) - good contrast on black */
+.error {
+    color: #ff8080;
+    font-weight: bold;
+}
+
+.success {
+    color: #7dffa0;
+    font-weight: bold;
+}
+
+/* Wide tables scroll sideways instead of breaking the page (manage, fun facts) */
+.table-wrap {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+
+.table-wrap table {
+    font-size: 0.9rem;
+}
+
+.table-wrap th,
+.table-wrap td {
+    text-align: left;
+    vertical-align: middle;
+    padding: 8px;
+}
+
+/* Status form inside the manage table */
+.table-wrap form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.table-wrap button {
+    padding: 6px 14px;
+    margin: 0;
+}
+
+/* Filter and delete forms on manage.php */
+.manage-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.manage-form label {
+    margin: 0;
+}
+
+/* Login form (login.php): add class="login-form" to the form */
+.login-form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #111827;
+    border: 2px solid #00f2fe;
+    border-radius: 20px;
+}
+
+.login-form label,
+.login-form input {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.login-form button {
+    margin-top: 15px;
+}
 

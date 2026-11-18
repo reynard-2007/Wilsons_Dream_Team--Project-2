@@ -1,7 +1,17 @@
 <?php
-    $page = "apply";
-    require_once __DIR__ . "/inc/header.inc";
+$page = "apply";
+$title = "DTShop - Apply";
+$description = "Apply for a job at DTShop. Fill in the application form with your details and skills.";
+$embedded_css = "#h1_apply { margin-top: 30px; }";
+require_once __DIR__ . "/inc/header.inc";
+
+// Job chosen on the jobs page (apply.php?job=FE001): used to pre-select the dropdown
+$selected_job = "";
+if (isset($_GET["job"])) {
+    $selected_job = $_GET["job"];
+}
 ?>
+<main>
 <h1 id="h1_apply">Job Application</h1>
 
 <form id="Job_apply" method="post" action="process_eoi.php" novalidate>
@@ -146,4 +156,5 @@
         <input class="form-buttons" type="reset" value="Reset" />
     </fieldset>
 </form>
+<main>
 <?php require_once __DIR__ . "/inc/footer.inc"; ?>

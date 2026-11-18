@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="DTShop current vacancies: Front-End Web Developer, UX Designer and Back-End Developer roles.">
-    <meta name="keywords"
-        content="DTShop, jobs, front-end developer, UX designer, back-end developer, COS10026, Project Part 2">
-    <meta name="author" content="Wilson's Dream Team">
-
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/dynamic.css">
-    <title>DTShop - Jobs</title>
-
-    <style>
-    .page-intro .eyebrow {
-        letter-spacing: 0.15em;
-    }
-    </style>
-</head>
-
-<body>
-    <?php
-    $page = "jobs";
-    require_once __DIR__ . "/functions.php";
-    require_once __DIR__ . "/inc/header.inc";
+<?php
+$page = "jobs";
+$title = "DTShop - Jobs";
+$description = "DTShop current vacancies: Front-End Web Developer, UX Designer and Back-End Developer roles.";
+$embedded_css = ".page-intro .eyebrow { letter-spacing: 0.15em; }";
+require_once __DIR__ . "/functions.php";
+require_once __DIR__ . "/inc/header.inc";
 
     $conn = db_connect();
     $result = false;
