@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 function clean_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
+    $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
     return $data;
 }
 
@@ -29,81 +30,111 @@ $other_skills = clean_input($_POST["other_skills"] ?? "");
 
 // Convert skills array into a string
 $skills_array = $_POST["skills"] ?? [];
-$skills = is_array($skills_array)
-    ? implode(", ", $skills_array)
-    : "";
+$skills = "";
+$valid_skill_values = true;
+
+if (is_array($skills_array)) {
+    foreach ($skills_array as $skill) {
+        if (!is_string($skill)) {
+            $valid_skill_values = false;
+            break;
+        }
+    }
+
+    if ($valid_skill_values) {
+        $skills = implode(", ", $skills_array);
+    }
+}
 
 // (c) Validate data
 $errors = "";
 
-if (empty($job_ref)) {
+// Validate job reference
+if ($job_ref == "") {
     $errors .= "<li>Job reference is required.</li>";
 } elseif (!preg_match("/^[A-Za-z0-9]{5}$/", $job_ref)) {
     $errors .= "<li>Job reference must have 5 letters or numbers.</li>";
 }
 
+// Validate first name
 if (empty($first_name)) {
     $errors .= "<li>First name is required.</li>";
 } elseif (!preg_match("/^[A-Za-z]{1,20}$/", $first_name)) {
     $errors .= "<li>First name must contain only letters (max 20).</li>";
 }
 
+// Validate last name
 if (empty($last_name)) {
     $errors .= "<li>Last name is required.</li>";
 } elseif (!preg_match("/^[A-Za-z]{1,20}$/", $last_name)) {
     $errors .= "<li>Last name must contain only letters (max 20).</li>";
 }
 
+// Validate nickname
 if ($nickname != "" && mb_strlen($nickname) > 20) {
     $errors .= "<li>Nickname must be 20 characters or less.</li>";
 }
 
+// Validate date of birth
 if (empty($dob)) {
     $errors .= "<li>Date of birth is required.</li>";
 } elseif (!preg_match("/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/", $dob)) {
     $errors .= "<li>Date of birth must be dd/mm/yyyy.</li>";
 } else {
     $parts = explode("/", $dob);
-    if (!checkdate((int)$parts[1], (int)$parts[0], (int)$parts[2])) {
+
+    if (!checkdate(
+        (int)$parts[1],
+        (int)$parts[0],
+        (int)$parts[2]
+    )) {
         $errors .= "<li>Date of birth is not valid.</li>";
     }
 }
 
+// Validate gender
 if (empty($gender)) {
     $errors .= "<li>Gender is required.</li>";
 } elseif ($gender != "Male" && $gender != "Female") {
     $errors .= "<li>Invalid gender.</li>";
 }
 
+// Validate email
 if (empty($email)) {
     $errors .= "<li>Email is required.</li>";
 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors .= "<li>Invalid email address.</li>";
 }
 
+// Validate phone
 if (!preg_match("/^[0-9]{8,12}$/", $phone)) {
     $errors .= "<li>Phone must contain 8-12 digits.</li>";
 }
 
+// Validate street address
 if (empty($street_address) || mb_strlen($street_address) > 40) {
     $errors .= "<li>Street address is required (max 40 characters).</li>";
 }
 
+// Validate ward
 if (empty($ward) || mb_strlen($ward) > 40) {
     $errors .= "<li>Ward is required (max 40 characters).</li>";
 }
 
+// Validate province/city
 if (empty($province_city)) {
     $errors .= "<li>Province/City is required.</li>";
 } elseif (mb_strlen($province_city) > 50) {
     $errors .= "<li>Province/City is too long.</li>";
 }
 
+// Validate postcode
 if (!preg_match("/^[0-9]{5}$/", $postcode)) {
     $errors .= "<li>Postcode must contain exactly 5 digits.</li>";
 }
 
-if (empty($skills)) {
+// Validate skills
+if ($skills == "") {
     $errors .= "<li>Please select at least one skill.</li>";
 } elseif (strlen($skills) > 255) {
     $errors .= "<li>Skills list is too long.</li>";
@@ -115,7 +146,7 @@ $allowed_skills = [
     "PHP", "Node.js", "SQL", "Git"
 ];
 
-if (!is_array($skills_array)) {
+if (!is_array($skills_array) || !$valid_skill_values) {
     $errors .= "<li>Invalid skills data.</li>";
 } else {
     foreach ($skills_array as $skill) {
@@ -126,32 +157,36 @@ if (!is_array($skills_array)) {
     }
 }
 
-// Validate selected job reference
-$allowed_jobs = ["FE001", "BE001", "UX001"];
-
-if ($job_ref != "" && !in_array($job_ref, $allowed_jobs, true)) {
-    $errors .= "<li>Invalid job reference.</li>";
-}
-
 // Stop if validation fails
 if ($errors != "") {
     $page = "apply";
-    require_once("header.inc");
+    $title = "Application Errors";
+    $description = "View errors in your job application.";
+
+    require_once __DIR__ . "/inc/header.inc";
+
+    echo "<main>";
     echo "<h1>Application Errors</h1>";
     echo "<ul>" . $errors . "</ul>";
     echo '<a href="apply.php">Back to Application</a>';
-    require_once("footer.inc");
+    echo "</main>";
+
+    require_once __DIR__ . "/inc/footer.inc";
     exit();
 }
 
 // (d) Connect to database
-$conn = mysqli_connect("localhost", "root", "", "dtshop_db");
+require_once __DIR__ . "/settings.php";
+
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    die("Database connection failed.");
 }
 
-// Create table if it does not exist
+mysqli_set_charset($conn, "utf8mb4");
+
+// Create eoi table if it does not exist
 $sql_create = "CREATE TABLE IF NOT EXISTS eoi (
     EOInumber INT AUTO_INCREMENT PRIMARY KEY,
     job_ref VARCHAR(5) NOT NULL,
@@ -173,10 +208,12 @@ $sql_create = "CREATE TABLE IF NOT EXISTS eoi (
 )";
 
 if (!mysqli_query($conn, $sql_create)) {
-    die("Table creation failed: " . mysqli_error($conn));
+    error_log("EOI table creation failed: " . mysqli_error($conn));
+    mysqli_close($conn);
+    die("Unable to prepare the application database.");
 }
 
-// (e) Insert application into database
+// (e) Insert application into eoi table
 $sql = "INSERT INTO eoi (
     job_ref, first_name, last_name, nickname,
     dob, gender, email, phone,
@@ -187,7 +224,9 @@ $sql = "INSERT INTO eoi (
 $stmt = mysqli_prepare($conn, $sql);
 
 if (!$stmt) {
-    die("Prepare failed: " . mysqli_error($conn));
+    error_log("EOI insert preparation failed: " . mysqli_error($conn));
+    mysqli_close($conn);
+    die("Unable to prepare your application.");
 }
 
 mysqli_stmt_bind_param(
@@ -215,14 +254,26 @@ if ($success) {
     $eoi_number = mysqli_insert_id($conn);
 } else {
     $error_message = "Unable to save your application.";
+    error_log("EOI insert failed: " . mysqli_stmt_error($stmt));
 }
 
 mysqli_stmt_close($stmt);
 mysqli_close($conn);
 
-// Display result
+// (f) Display result
 $page = "apply";
-require_once("header.inc");
+
+if ($success) {
+    $title = "Application Successful";
+    $description = "Your job application has been submitted successfully.";
+} else {
+    $title = "Application Failed";
+    $description = "Your job application could not be submitted.";
+}
+
+require_once __DIR__ . "/inc/header.inc";
+
+echo "<main>";
 
 if ($success) {
     echo "<h1>Application Successful</h1>";
@@ -235,5 +286,7 @@ if ($success) {
 
 echo '<a href="apply.php">Back to Application</a>';
 
-require_once("footer.inc");
+echo "</main>";
+
+require_once __DIR__ . "/inc/footer.inc";
 ?>
