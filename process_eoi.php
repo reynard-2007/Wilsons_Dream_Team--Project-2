@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 function clean_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
+    $data = htmlspecialchars($data);
     return $data;
 }
 
@@ -136,19 +137,25 @@ if ($job_ref != "" && !in_array($job_ref, $allowed_jobs, true)) {
 // Stop if validation fails
 if ($errors != "") {
     $page = "apply";
+    $title = "Application Errors";
+    $description = "View errors in your job application.";
     require_once("header.inc");
+    echo "<main>";
     echo "<h1>Application Errors</h1>";
     echo "<ul>" . $errors . "</ul>";
     echo '<a href="apply.php">Back to Application</a>';
+    echo "</main>";
     require_once("footer.inc");
     exit();
 }
 
 // (d) Connect to database
-$conn = mysqli_connect("localhost", "root", "", "dtshop_db");
+require_once("settings.php");
+
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    die("Database connection failed.");
 }
 
 // Create table if it does not exist
@@ -222,8 +229,15 @@ mysqli_close($conn);
 
 // Display result
 $page = "apply";
+if ($success) {
+    $title = "Application Successful";
+    $description = "Your job application has been submitted successfully.";
+} else {
+    $title = "Application Failed";
+    $description = "Your job application could not be submitted.";
+}
 require_once("header.inc");
-
+echo "<main>";
 if ($success) {
     echo "<h1>Application Successful</h1>";
     echo "<p>Thank you for your application!</p>";
@@ -234,6 +248,6 @@ if ($success) {
 }
 
 echo '<a href="apply.php">Back to Application</a>';
-
+echo "</main>";
 require_once("footer.inc");
 ?>
