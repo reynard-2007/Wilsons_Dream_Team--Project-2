@@ -29,3 +29,5 @@
     </div>
     <p class="copyright">&copy; 2026 DTShop</p>
 </footer>
+</body>
+</html>
