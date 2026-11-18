@@ -26,13 +26,15 @@ project2/
 ├── process_eoi.php    Validates and saves EOI records
 ├── search.php         Job search results
 ├── login.php          Manager login
-├── logout.php         Ends the manager session
 ├── manage.php         HR manager page (login required)
-├── header.inc         Shared header (includes nav.inc)
-├── nav.inc            Shared navigation
-├── footer.inc         Shared footer
+├── functions.php      Shared helper functions (e.g. input cleaning)
 ├── settings.php       Database connection details
 ├── dtshop_db.sql      Database export (tables and sample data)
+├── about.sql          SQL for the about table
+├── inc/
+│   ├── header.inc     Shared header (includes nav.inc)
+│   ├── nav.inc        Shared navigation
+│   └── footer.inc     Shared footer
 ├── images/            Page content images
 ├── styles/
 │   ├── styles.css     Stylesheet
@@ -70,7 +72,7 @@ Shared header, navigation and footer live in `.inc` files and are pulled in with
 | `search.php` | Reads the keyword, sanitises it, searches the `jobs` table and shows matching jobs in the same layout as `jobs.php`. Shows "No jobs found." when nothing matches. |
 | `apply.php` | Application form that posts to `process_eoi.php`. Browser validation is switched off; all checks run on the server. |
 | `process_eoi.php` | Redirects when opened directly (no POST data). Otherwise trims, strips slashes and escapes every input, validates formats, inserts the record and shows the new EOInumber. On errors it lists what to fix. |
-| `login.php` / `logout.php` | Manager authentication using the `users` table and PHP sessions. |
+| `login.php` | Manager authentication using the `users` table and PHP sessions. |
 | `manage.php` | Login required. Managers can list all EOIs, list by job reference, search by applicant first name, last name or both, delete all EOIs for a job reference, change an EOI status, and choose the sort field. |
 | `about.php` | Group name, class schedule, member contributions (loaded from the `about` table), quotes, group photo and fun facts table. |
 
@@ -115,10 +117,10 @@ The jobs page carries an inclusive employment statement that encourages applicat
 
 | Name | Student ID | Part 1 | Part 2 |
 |------|------------|--------|--------|
-| Yuki | 106394628 | `jobs.html` | `jobs` table, `jobs.php`, `search.php` |
-| Khang | 106391302 | `index.html` | TBC |
-| Hung | 106726072 | `about.html` | TBC |
-| Anh | 106727091 | `apply.html` | TBC |
+| Yuki | 106394628 | `jobs.php` | `jobs` table, `jobs.php`, `search.php` |
+| Khang | 106391302 | `index.php` | TBC |
+| Hung | 106726072 | `about.php` | TBC |
+| Anh | 106727091 | `apply.php` | TBC |
 
 ## Academic Integrity
 
