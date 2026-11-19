@@ -13,57 +13,59 @@ require_once __DIR__ . "/inc/header.inc";
     if ($conn) { // Read all jobs to count them and display them
         $result = mysqli_query($conn, "SELECT * FROM jobs ORDER BY job_ref"); // Read all jobs to count them and display them
         if ($result) {
-            $total = mysqli_num_rows($result);
+            $total = mysqli_num_rows($result); // Count the number of jobs
+        }
+        else {
+            error_log("Error reading jobs table: " . mysqli_error($conn));
         }
     }
     ?>
 
-    <main>
-        <section class="page-intro">
-            <p class="eyebrow">Now hiring &middot; <?php echo $total; ?> open roles</p>
-            <h1>Current vacancies</h1>
-            <p style="color: #c9d3ea;">
-                DTShop is growing its web and user experience team. <?php echo $total; ?> roles are open for 2026.
-                All are based in Ho Chi Minh City with hybrid working.
-            </p>
+<main>
+    <section class="page-intro">
+        <p class="eyebrow">Now hiring &middot; <?php echo $total; ?> open roles</p>
+        <h1>Current vacancies</h1>
+        <p style="color: #c9d3ea;">
+            DTShop is growing its web and user experience team. <?php echo $total; ?> roles are open for 2026.
+            All are based in Ho Chi Minh City with hybrid working.
+        </p>
 
-            <?php if ($total > 0) { ?>
-            <nav class="jump-links" aria-label="Jump to a job">
-                <?php
+        <?php if ($total > 0) { ?>
+        <nav class="jump-links" aria-label="Jump to a job">
+            <?php
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<a class="button" href="#' . e($row["job_ref"]) . '">' . e($row["title"]) . "</a>\n";
+                    echo '<a class="button" href="#' . e($row["job_ref"]) . '">' . e($row["title"]) . "</a>\n"; // Display a jump link for each job  
                 }
                 mysqli_data_seek($result, 0);
                 ?>
-            </nav>
-            <?php } ?>
-        </section>
+        </nav>
+        <?php } ?>
+    </section>
 
-        <section class="box">
-            <p class="eyebrow">Search</p>
-            <form action="search.php" method="get">
-                <label for="keyword">Search jobs:</label>
-                <input type="text" id="keyword" name="keyword">
-                <button type="submit">Search</button>
-            </form>
-        </section>
+    <section class="job" id="Search">
+        <p class="eyebrow">Search</p>
+        <form action="search.php" method="get">
+            <label for="keyword">Search jobs:</label>
+            <input type="text" id="keyword" name="keyword">
+            <button type="submit">Search</button>
+        </form>
+    </section>
 
-        <div class="jobs-layout">
-            <aside class="side-note" aria-labelledby="eeo-title">
-                <p class="eyebrow">Our commitment</p>
-                <h2 id="eeo-title">Inclusive employment</h2>
-                <p>DTShop encourages applications from Aboriginal and Torres Strait Islander peoples, people with
-                    disability, and people of all backgrounds.</p>
-                <p>Why we say this: First Nations peoples have cared for Country and shared knowledge for tens of
-                    thousands of years. We want that way of thinking, especially around community, access and design,
-                    to shape the technology we build.</p>
-                <p>If you need adjustments during recruitment, tell us and we will arrange them.</p>
-                <p><a href="mailto:careers@dtshop.vn">Email careers@dtshop.vn</a></p>
-            </aside>
+    <div class="jobs-layout">
+        <aside class="side-note" aria-labelledby="eeo-title">
+            <p class="eyebrow">Our commitment</p>
+            <h2 id="eeo-title">Inclusive employment</h2>
+            <p>DTShop encourages applications from Aboriginal and Torres Strait Islander peoples, people with
+                disability, and people of all backgrounds.</p>
+            <p>Why we say this: First Nations peoples have cared for Country and shared knowledge for tens of
+                thousands of years. We want that way of thinking, especially around community, access and design,
+                to shape the technology we build.</p>
+            <p>If you need adjustments during recruitment, tell us and we will arrange them.</p>
+            <p><a href="mailto:careers@dtshop.vn">Email careers@dtshop.vn</a></p>
+        </aside>
+        <div class="jobs-content">
 
-            <div class="jobs-content">
-
-                <?php    // Display the jobs or a message if there are none
+            <?php    // Display the jobs or a message if there are none
                 if (!$conn) {
                     echo "<p>Jobs are unavailable right now. Please try again later.</p>";
                 } elseif (!$result) {
@@ -81,41 +83,41 @@ require_once __DIR__ . "/inc/header.inc";
                 }
                 ?>
 
-                <section class="box" aria-labelledby="process-title">
-                    <p class="eyebrow">Hiring process</p>
-                    <h2 id="process-title">How we hire</h2>
-                    <p class="hire-intro">Five steps from application to offer.</p>
+            <section class="job" aria-labelledby="process-title">
+                <p class="eyebrow">Hiring process</p>
+                <h2 id="process-title">How we hire</h2>
+                <p class="hire-intro">Five steps from application to offer.</p>
 
-                    <ol class="steps">
-                        <li>
-                            <h3>Apply online</h3>
-                            <p>Submit the application form with the job reference number.</p>
-                        </li>
-                        <li>
-                            <h3>Application review</h3>
-                            <p>We review applications within two weeks.</p>
-                        </li>
-                        <li>
-                            <h3>Practical task</h3>
-                            <p>Shortlisted applicants complete a short practical task.</p>
-                        </li>
-                        <li>
-                            <h3>Final interview</h3>
-                            <p>Meet the hiring manager and a team member.</p>
-                        </li>
-                        <li>
-                            <h3>Offer</h3>
-                            <p>Successful applicants receive an offer by email.</p>
-                        </li>
-                    </ol>
+                <ol class="steps">
+                    <li>
+                        <h3>Apply online</h3>
+                        <p>Submit the application form with the job reference number.</p>
+                    </li>
+                    <li>
+                        <h3>Application review</h3>
+                        <p>We review applications within two weeks.</p>
+                    </li>
+                    <li>
+                        <h3>Practical task</h3>
+                        <p>Shortlisted applicants complete a short practical task.</p>
+                    </li>
+                    <li>
+                        <h3>Final interview</h3>
+                        <p>Meet the hiring manager and a team member.</p>
+                    </li>
+                    <li>
+                        <h3>Offer</h3>
+                        <p>Successful applicants receive an offer by email.</p>
+                    </li>
+                </ol>
 
-                    <p><a class="button" href="apply.php">Start your application</a></p>
-                </section>
-            </div>
+                <p><a class="button" href="apply.php">Start your application</a></p>
+            </section>
         </div>
-    </main>
+    </div>
+</main>
 
-    <?php require_once __DIR__ . "/inc/footer.inc"; ?>
+<?php require_once __DIR__ . "/inc/footer.inc"; ?>
 
 </body>
 
