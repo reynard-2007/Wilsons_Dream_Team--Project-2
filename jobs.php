@@ -39,7 +39,7 @@ require_once __DIR__ . "/inc/header.inc";
             <?php } ?>
         </section>
 
-        <section class="box">
+        <section class="box" id="search-title">
             <p class="eyebrow">Search</p>
             <form action="search.php" method="get">
                 <label for="keyword">Search jobs:</label>
