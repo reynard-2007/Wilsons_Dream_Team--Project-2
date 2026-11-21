@@ -170,3 +170,15 @@ INSERT IGNORE INTO about (id, name, student_id, role, contribution_part1, contri
 (2, 'Huynh Phan Yuki', '106394628', 'Jira Manager', 'Managed the Jira project board, tasks and sprint planning, and built the jobs page.', 'Built jobs.php, which loads job listings from the jobs table, created the jobs table, and made search.php with the search boxes on the home and jobs pages.', 'Học đi đôi với hành.', 'Learning goes hand in hand with practice.'),
 (3, 'Nguyen Dinh Anh', '106727091', 'Aboriginal and Torres Strait Islander Content Lead', 'Responsible for the Aboriginal and Torres Strait Islander element of the project, and built the apply page and its form.', 'Built apply.php and process_eoi.php with server-side validation of every field, created the eoi table, and showed the EOI number after a successful submission.', 'Thất bại là mẹ thành công.', 'Failure is the mother of success.'),
 (4, 'Dao Ba Hung', '106726072', 'Tutor Liaison', 'Communicated with the tutor on behalf of the group, and built the about page.', 'Created the about table and about.php, which loads the member contributions from the database, and built login.php with the users table to protect the manage page.', 'Kiến tha lâu cũng đầy tổ.', 'Small efforts add up over time.');
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    failed_attempts INT NOT NULL DEFAULT 0,
+    locked_until DATETIME NULL DEFAULT NULL
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT IGNORE INTO users (id, username, password) VALUES
+(1, 'admin', '$2y$10$NGyAbubNAtEbQsBSL/UX9OdGo6QXqe91CjQ7RxPGp74VKjRlbP8HO');
+
