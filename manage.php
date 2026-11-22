@@ -5,13 +5,8 @@ author: Wilson's Dream Team
 description: HR manager page, list, filter, sort, change status and delete EOIs
 */
 
-session_start();
-
-// Block people who are not logged in (login.php must set this session variable)
-if (!isset($_SESSION["logged_in"])) {
-    header("Location: login.php");   
-    exit();                           
-}
+require_once __DIR__ . "/inc/auth.inc";
+require_login();
 
 require_once("settings.php");
 
