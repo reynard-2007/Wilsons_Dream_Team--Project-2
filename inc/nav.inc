@@ -4,5 +4,6 @@
         <li><a href="jobs.php"<?php if ($page == "jobs") { echo ' aria-current="page"'; } ?>>Jobs</a></li>
         <li><a href="apply.php"<?php if ($page == "apply") { echo ' aria-current="page"'; } ?>>Apply</a></li>
         <li><a href="about.php"<?php if ($page == "about") { echo ' aria-current="page"'; } ?>>About</a></li>
+        <li><a href="login.php"<?php if ($page == "login") { echo ' aria-current="page"'; } ?>>Login</a></li>
     </ul>
 </nav>
