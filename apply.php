@@ -156,5 +156,5 @@ if (isset($_GET["job"])) {
         <input class="form-buttons" type="reset" value="Reset" />
     </fieldset>
 </form>
-<main>
+</main>
 <?php require_once __DIR__ . "/inc/footer.inc"; ?>
