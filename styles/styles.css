@@ -270,8 +270,8 @@ th, td {
 }
 
 th {
-    background-color: rgba(0, 242, 254, 0.5);
-    color: #ffffff;
+    background-color: #000000;
+    color: #00f2fe;
 }
 
 /* animation*/
@@ -493,7 +493,6 @@ aside.side-note {
     letter-spacing: -0.025em;
     color: #ffffff;
 }
-
 
 .job h3 {
     color: #14243B;

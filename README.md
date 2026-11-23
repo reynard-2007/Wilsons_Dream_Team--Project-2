@@ -152,7 +152,7 @@ The website can be checked using the following validation tools:
 
 | Name | Student ID | Part 1 Contribution | Part 2 Contribution |
 |------|------------|--------------------|--------------------|
-| Yuki | 106394628 | `jobs.html` | `jobs.php`, `jobs` table and `search.php` |
+| Yuki | 106394628 | `jobs.html` | `jobs.php`, `jobs` table, `function.php` and `search.php` |
 | Khang | 106391302 | `index.html` | `index.php`, `manage.php`, `settings.php` and shared PHP includes (`nav.inc`, `header.inc`, `footer.inc`) |
 | Hung | 106726072 | `about.html` | `about.php`, `about` table, `login.php`, `logout.php` and `users` table |
 | Anh | 106727091 | `apply.html` | `apply.php`, `process_eoi.php` and `eoi` table |
