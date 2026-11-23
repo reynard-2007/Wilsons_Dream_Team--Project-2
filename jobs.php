@@ -21,14 +21,14 @@ require_once __DIR__ . "/inc/header.inc";
     }
     ?>
 
-    <main>
-        <section class="page-intro">
-            <p class="eyebrow">Now hiring &middot; <?php echo $total; ?> open roles</p>
-            <h1>Current vacancies</h1>
-            <p style="color: #00f2fe;">
-                DTShop is growing its web and user experience team. <?php echo $total; ?> roles are open for 2026.
-                All are based in Ho Chi Minh City with hybrid working.
-            </p>
+<main>
+    <section class="page-intro">
+        <p class="eyebrow">Now hiring &middot; <?php echo $total; ?> open roles</p>
+        <h1>Current vacancies</h1>
+        <p style="color: #2457C5;">
+            DTShop is growing its web and user experience team. <?php echo $total; ?> roles are open for 2026.
+            All are based in Ho Chi Minh City with hybrid working.
+        </p>
 
         <?php if ($total > 0) { ?>
         <nav class="jump-links" aria-label="Jump to a job">
@@ -42,18 +42,14 @@ require_once __DIR__ . "/inc/header.inc";
         <?php } ?>
     </section>
 
-        <div class="jobs-layout">
-            <aside class="side-note" aria-labelledby="eeo-title">
-                <p class="eyebrow">Our commitment</p>
-                <h2 id="eeo-title">Inclusive employment</h2>
-                <p>DTShop encourages applications from Aboriginal and Torres Strait Islander peoples, people with
-                    disability, and people of all backgrounds.</p>
-                <p>Why we say this: First Nations peoples have cared for Country and shared knowledge for tens of
-                    thousands of years. We want that way of thinking, especially around community, access and design,
-                    to shape the technology we build.</p>
-                <p>If you need adjustments during recruitment, tell us and we will arrange them.</p>
-                <p> <a href="mailto:careers@dtshop.vn">Email: careers@dtshop.vn</a> </p>
-            </aside>    
+    <section class="box" id="search-title">
+        <p class="eyebrow">Search</p>
+        <form action="search.php" method="get">
+            <label for="keyword">Search jobs:</label>
+            <input type="text" id="keyword" name="keyword">
+            <button type="submit">Search</button>
+        </form>
+    </section>
 
     <div class="jobs-layout">
         <aside class="side-note" aria-labelledby="eeo-title">
@@ -89,7 +85,7 @@ require_once __DIR__ . "/inc/header.inc";
 
             <section class="job" aria-labelledby="process-title">
                 <p class="eyebrow">Hiring process</p>
-                <h2 id="process-title">How we hire</h2>
+                <h1 id="process-title">How we hire</h1>
                 <p class="hire-intro">Five steps from application to offer.</p>
 
                 <ol class="steps">
