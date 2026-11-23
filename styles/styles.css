@@ -7,7 +7,7 @@ author: Wilson's Dream Team
 
 created: 18/10/2026
 
-last modified: 18/11/2026
+last modified: 23/11/2026
 
 description: Shared stylesheet for index, jobs, apply, about (Part 1)
 and process_eoi, manage, login, search (Part 2)
@@ -17,8 +17,8 @@ and process_eoi, manage, login, search (Part 2)
 /* setup*/
 
 body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -26,16 +26,26 @@ body {
 
 h1 {
     font-size: 48px;
+    font-weight: 900;
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: #000000;
     margin: 10px 0;
 }
 
 h2 {
-    color: #00f2fe; 
+    color: #000000;
+    font-size: 1.75rem;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
 }
 
 a {
     color: #ffffff;
 }
+
 
 img {
     max-width: 100%;
@@ -92,29 +102,45 @@ nav a[aria-current="page"] {
 
 /*page */
 
-/* Background graphic for the home page (file is in styles/images/) */
+/* Background graphic for the home page*/
 .top-section {
     display: flex;
+    align-items: stretch;
     justify-content: space-between;
-    padding: 40px 20px;
-    background-color: #000000;
-    background-image: url(images/bg-circuit.png);
+    gap: 24px;
+    padding: 30px 0;
+    background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    border-radius: 20px;
+    border-radius: 0;
+    color: #26364C;
 }
 
 .intro-text {
-    width: 58%;
+    flex: 1 1 0;
+    width: auto;
+    box-sizing: border-box;
+    padding: 28px;
+    background-color: #F1F5F9;
+    border: 2px solid #E2E8F0;
+    border-radius: 20px;
+    color: #26364C;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hiring {
     display: inline-block;
-    background-color: #111827;
-    border: 1px solid #00f2fe;
-    padding: 5px 15px;
-    font-size: 14px;
+    margin: 0 0 1.25rem;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2457C5;
+    background: rgba(36, 87, 197, 0.07);
+    border: 1px solid #B8C9E8;
+    border-radius: 999px;
 }
 
 .tags {
@@ -123,17 +149,22 @@ nav a[aria-current="page"] {
 }
 
 .tags li {
-    background-color: #111827;
-    border: 1px solid #00f2fe;
+    background-color: #F1F5F9;
+    border: 1px solid #E2E8F0;
     padding: 8px 15px;
     margin-bottom: 8px;
+    color: #26364C;
 }
 .right-box {
-    width: 34%;
-    background-color: #111827;
-    border: 2px solid #00f2fe;
+    flex: 0 0 36%;
+    width: auto;
+    box-sizing: border-box;
+    background-color: #F1F5F9;
+    border: 2px solid #E2E8F0;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 20px;
+    color: #26364C;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .right-box ul {
@@ -142,19 +173,20 @@ nav a[aria-current="page"] {
 }
 
 .right-box li {
-    background-color: #000000;
-    border: 1px solid #00f2fe;
+    background-color: #F1F5F9;
+    border: 1px solid #E2E8F0;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 6px;
+    color: #26364C;
 }
 
 /*box,button*/
 .button, 
 button[type="submit"] {
     display: inline-block;
-    background-color: #111827;
-    border: 2px solid #7adadf;
+    background-color: #2457C5;
+    border: 2px solid #2457C5;
     color: #ffffff;
     padding: 12px 25px;
     margin-right: 10px;
@@ -168,18 +200,19 @@ button[type="submit"] {
 
 .button:hover, 
 button[type="submit"]:hover {
-    background-color: #00f2fe;
-    color: #000000;
+    background-color: #1D46A5;
+    color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 242, 254, 0.4);
 
 }
 .box {
-    background-color: #111827;
-    border: 2px solid #00f2fe;
+    background-color: #F1F5F9;
+    border: 2px solid #E2E8F0;
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 30px;
+    color: #26364C;
 }
 
 .search-select,
@@ -188,9 +221,9 @@ button[type="submit"]:hover {
     width: 100%;
     padding: 12px 15px;
     margin-top: 5px;
-    background-color: #111827;
-    color: #ffffff;
-    border: 2px solid #00f2fe;
+    background-color: #ffffff;
+    color: #26364C;
+    border: 2px solid #CBD5E1;
     border-radius: 8px;
     font-size: 15px;
     cursor: pointer;
@@ -208,8 +241,8 @@ button[type="submit"]:hover {
 }
 
 .search-select option {
-    background-color: #111827;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #26364C;
     padding: 10px;
 }
 
@@ -231,63 +264,78 @@ caption {
 }
 
 th, td {
-    border: 1px solid #ffffff;
+    border: 1px solid #E2E8F0;
     padding: 10px 12px;
     text-align: left;
 }
 
 th {
-    background-color: #000000;
-    color: #00f2fe;
+    background-color: #2457C5;
+    color: #ffffff;
 }
 
 /* animation*/
-
+.intro-text,
+.right-box,
 .right-box li,
+
 table tbody tr,
+
 .box,
+
 .tags li,
+
 .photo,
-.job,
-aside.side-note {
+
+.job {
     transition: all 0.3s ease;
 }
+
+.intro-text:hover,
+.right-box:hover {
+    transform: translateY(-5px);
+    border-color: #2457C5;
+    box-shadow: 0 12px 24px rgba(36, 87, 197, 0.12);
+}
+
 .right-box li:hover {
     transform: translateX(8px);
-    background-color: #121c33;
-    border-color: #00f2fe;
-    box-shadow: -4px 0 12px rgba(0, 242, 254, 0.4);
+    background-color: #E7EEFF;
+    border-color: #2457C5;
+    box-shadow: -4px 0 12px rgba(36, 87, 197, 0.12);
 }
+
 .photo:hover {
     transform: scale(1.03);
     filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.5));
 }
 
 table tbody tr:hover {
-    background-color: rgba(0, 242, 254, 0.15);
+    background-color: #E7EEFF;
+    border-color: #2457C5;
     cursor: pointer;
 }
 
 table tbody tr:hover td {
-    color: #00f2fe;
-    border-color: #00f2fe;
+    color: #2457C5;
+    border-color: #E2E8F0;
 }
 
 .box:hover {
-    border-color: #00f2fe;
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+    border-color: #B8C9E8;
+    box-shadow: 0 0 15px rgba(36, 87, 197, 0.10);
 }
 
 search-title.box:hover {
-    border-color: #00f2fe;
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+    border-color: #B8C9E8;
+    box-shadow: 0 0 15px rgba(36, 87, 197, 0.10);
 }
 
 .tags li:hover {
     transform: translateY(-3px);
-    background-color: #1a263d;
-    color: #00f2fe;
-    box-shadow: 0 4px 8px rgba(0, 242, 254, 0.2);
+    background-color: #E7EEFF;
+    color: #14243B;
+    box-shadow: 0 4px 8px rgba(36, 87, 197, 0.10);
 }
 
 /*footer*/
@@ -295,7 +343,8 @@ search-title.box:hover {
 footer {
     padding: 20px 5%;
     background-color: #121c33;
-    border-top: 2px solid #111827;
+    border-top: 2px solid #121c33;
+    color: #ffffff;
 }
 
 .footer-columns {
@@ -305,6 +354,10 @@ footer {
 
 .footer-columns section {
     width: 30%;
+}
+
+footer h2 {
+    color: #FFFFFF;
 }
 
 footer ul {
@@ -327,7 +380,7 @@ footer li {
     height: 60px;      
     object-fit: cover; 
     border-radius: 50%;
-    border: 2px solid #00f2fe; 
+    border: 2px solid #2457C5; 
     display: block;
     margin: 0 auto;  
 }
@@ -361,9 +414,9 @@ footer li {
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: cyan;
-    background: rgba(0, 242, 254, 0.07);
-    border: 1px solid;
+    color: #2457C5;
+    background: rgba(247, 247, 248, 0.07);;
+    border: 1px solid #B8C9E8;
     border-radius: 999px;
 }
 
@@ -386,19 +439,25 @@ aside.side-note {
     width: 25%;
     margin: 0 0 20px 25px;
     padding: 20px;
-    border: 2px solid #00f2fe;
+    border: 2px solid #E2E8F0;
     border-radius: 20px;
-    background-color: #111827;
-    color: #ffffff;
+    background-color: #F1F5F9;
+    color: #26364C;
     font-size: 0.95rem;
     box-sizing: border-box;
     line-height: 1.6;
 }
 
-aside.side-note:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0, 242, 254, 0.25);
-    border-color: #00f2fe;
+.side-note a {
+    color: #2457C5;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.3s ease;
+}
+
+.side-note a:hover {
+    color: #1D46A5;
 }
 
 .side-note .eyebrow{
@@ -408,8 +467,8 @@ aside.side-note:hover {
 
 .job:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0, 242, 254, 0.25);
-    border-color: #00f2fe;
+    box-shadow: 0 12px 24px rgba(36, 87, 197, 0.12);
+    border-color: #2457C5;
 }
 
 .jobs-content {
@@ -418,12 +477,13 @@ aside.side-note:hover {
 
 /* One job card */
 .job {
-    background-color: #111827;
-    border: 2px solid #00f2fe;
+    background-color: #F1F5F9;
+    border: 2px solid #E2E8F0;
     border-radius: 20px;
-    border-left: 8px solid #00f2fe;
+    border-left: 8px solid #2457C5;
     padding: 20px 25px;
     margin-bottom: 30px;
+    color: #26364C;
 }
 
 .job h2 {
@@ -434,9 +494,17 @@ aside.side-note:hover {
     color: #ffffff;
 }
 
+.job h1 {
+    margin: 0;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: #2457C5 !important;
+}
+
 .job h3 {
-    color: #ffffff;
-    border-bottom: 1px solid #00f2fe;
+    color: #14243B;
+    border-bottom: 1px solid #E2E8F0;
     padding-bottom: 5px;
 }
 
@@ -445,16 +513,18 @@ aside.side-note:hover {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.9rem;
-    padding-bottom: 1.25rem;
+    padding: 16px 20px;
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #2457C5;
+    border: 1px solid #ffffff;
+    border-radius: 16px;
 }
 
 .ref {
     margin: 0;
-    color: #000000;
-    background-color: cyan;
-    border: 1px solid black;
+    color: #ffffff;
+    background-color: #2457C5;
+    border: 1px solid #2457C5;
     border-radius: 999px;
     padding: 5px 12px;
     font-size: 0.9rem;
@@ -470,8 +540,8 @@ aside.side-note:hover {
 
 .job-meta div {
     padding: 0.9rem 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
     border-radius: 1rem;
 }
 
@@ -481,12 +551,12 @@ aside.side-note:hover {
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: cyan;
+    color: #2457C5;
 }
 
 .job-meta dd {
     margin: 0;
-    color: #ffffff;
+    color: #26364C;
 }
 
 .job-meta .salary {
@@ -513,7 +583,7 @@ aside.side-note:hover {
 }
 
 .hire-intro {
-    color: #c9d3ea;
+    color: #526174;
 }
 
 .steps {
@@ -541,7 +611,7 @@ aside.side-note:hover {
 
 .steps p {
     margin: 0;
-    color: #c9d3ea;
+    color: #526174;
 }
 
 
@@ -600,6 +670,12 @@ textarea:focus-visible {
     .right-section,
     .footer-columns section {
         width: 100%;
+        flex: none;
+    }
+
+    .top-section {
+        gap: 16px;
+        padding: 20px 0;
     }
 
     /* jobs page: aside goes full width, grids become one column */
@@ -618,22 +694,24 @@ textarea:focus-visible {
 /*---------------------------------apply---------------------------------- */
 /* filename: styles.css
 author: Wilson's Dream team
-latest update: 21/10/2026 
+latest update: 23/10/2026 
 Description: style for apply.html */
 
  #Job_apply{
-    background-color: white;
-    color:#000000;
+    background-color: #F1F5F9;
+    color:#26364C;
     max-width: 1000px;
     margin: auto;
     padding: 25px; 
-    border: 5px solid #00D9E6;
+    border: 2px solid #E2E8F0;
     border-radius: 12px;
 }
 
 #h1_apply {
     text-align: center;
-    color: Cyan;
+    color: #000000;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 input, select, textarea {
@@ -659,7 +737,7 @@ label {
 }
 
 #link_pos {
-    color: blue;
+    color: #2457C5;
 }
 
 .form-layout {
@@ -682,8 +760,9 @@ label {
 }
 
 input[type="submit"] {
-    background-color: #00D9E6;
-    color: #08202B;
+    background-color: #2457C5;
+    color: #ffffff;
+    border: 1px solid #2457C5;
 }
 
 input[type="reset"] {
@@ -695,8 +774,8 @@ input[type="reset"] {
 /* Student ID badge */
 .student-id {
     display: inline-block;
-    background-color: #00f2fe;
-    color: #000000;
+    background-color: #E7EEFF;
+    color: #2457C5;
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 0.8rem;
@@ -706,12 +785,12 @@ input[type="reset"] {
 
 /* Group photo with a border */
 .group-photo {
-    border: 3px solid #00f2fe;
+    border: 3px solid #E2E8F0;
     border-radius: 12px;
     padding: 10px;
     margin: 20px 0;
     text-align: center;
-    background-color: #111827;
+    background-color: #F1F5F9;
 }
 
 .group-photo img {
@@ -728,12 +807,12 @@ input[type="reset"] {
 
 /* Messages (process_eoi, manage, login) - good contrast on black */
 .error {
-    color: #ff8080;
+    color: #B42318;
     font-weight: bold;
 }
 
 .success {
-    color: #7dffa0;
+    color: #16703C;
     font-weight: bold;
 }
 
@@ -785,8 +864,8 @@ input[type="reset"] {
     max-width: 400px;
     margin: 30px auto;
     padding: 25px;
-    background-color: #111827;
-    border: 2px solid #00f2fe;
+    background-color: #F1F5F9;
+    border: 2px solid #E2E8F0;
     border-radius: 20px;
 }
 
@@ -800,4 +879,3 @@ input[type="reset"] {
 .login-form button {
     margin-top: 15px;
 }
-
