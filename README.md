@@ -117,10 +117,10 @@ The jobs page carries an inclusive employment statement that encourages applicat
 
 | Name | Student ID | Part 1 | Part 2 |
 |------|------------|--------|--------|
-| Yuki | 106394628 | `jobs.php` | `jobs` table, `jobs.php`, `search.php` |
-| Khang | 106391302 | `index.php` | TBC |
-| Hung | 106726072 | `about.php` | TBC |
-| Anh | 106727091 | `apply.php` | TBC |
+| Yuki | 106394628 | `jobs.html` | `jobs` table, `jobs.php`, `search.php` |
+| Khang | 106391302 | `index.html` | `index.php`, `mange.php`, `settings.php`, `nav.inc`, `header.inc`, `footer.inc` |
+| Hung | 106726072 | `about.html` | `about.php`, `about` table, `login.php`, `logout.php`, `users` table |
+| Anh | 106727091 | `apply.html` | `apply.php`, `process_eoi.php`, `eoi` table |
 
 ## Academic Integrity
 
