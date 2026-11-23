@@ -7,6 +7,6 @@ description: Database connection details for DTShop (Part 2)
 
 $host = "localhost";
 $user = "root";
-$pwd = "Khang@2007";               
+$pwd = "";               
 $sql_db = "dtshop_db";   
 ?>
