@@ -20,7 +20,7 @@ require_once __DIR__ . "/inc/header.inc";
         }
     }
     ?>
-s
+
 <main>
     <section class="page-intro">
         <p class="eyebrow">Now hiring &middot; <?php echo $total; ?> open roles</p>
@@ -118,7 +118,3 @@ s
 </main>
 
 <?php require_once __DIR__ . "/inc/footer.inc"; ?>
-
-</body>
-
-</html>
