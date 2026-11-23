@@ -116,31 +116,29 @@ $embedded_css = ".login-box { max-width: 420px; margin: 40px auto; }
 require_once __DIR__ . "/inc/header.inc";
 ?>
 
-    <main>
-        <section>
-            <h2 style="margin-top: 0;">Manager Login</h2>
-            <div class="box login-box">
-                <?php if ($error !== ""): ?>
-                    <p class="error" role="alert"><?php echo htmlspecialchars($error); ?></p>
-                <?php endif; ?>
+<main>
+    <section>
+        <h2 style="margin-top: 0;">Manager Login</h2>
+        <div class="box login-box">
+            <?php if ($error !== ""): ?>
+            <p class="error" role="alert"><?php echo htmlspecialchars($error); ?></p>
+            <?php endif; ?>
 
-                <form method="post" action="login.php" autocomplete="on">
-                    <input type="hidden" name="csrf_token"
-                           value="<?php echo htmlspecialchars($_SESSION["csrf_token"]); ?>">
+            <form method="post" action="login.php" autocomplete="on">
+                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION["csrf_token"]); ?>">
 
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" maxlength="50"
-                           value="<?php echo htmlspecialchars($username); ?>"
-                           autocomplete="username" required autofocus>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" maxlength="50"
+                    value="<?php echo htmlspecialchars($username); ?>" autocomplete="username" required autofocus>
 
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" maxlength="200"
-                           autocomplete="current-password" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" maxlength="200" autocomplete="current-password"
+                    required>
 
-                    <p><button type="submit">Log in</button></p>
-                </form>
-            </div>
-        </section>
-    </main>
+                <p><button type="submit">Log in</button></p>
+            </form>
+        </div>
+    </section>
+</main>
 
 <?php require_once __DIR__ . "/inc/footer.inc"; ?>
