@@ -1,79 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$page = "jobs";
+$title = "DTShop - Search Jobs";
+$description = "Search DTShop job vacancies by job title or job reference.";
+require_once __DIR__ . "/functions.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Search DTShop job vacancies.">
-    <meta name="keywords" content="DTShop, job search, COS10026, Project Part 2">
-    <meta name="author" content="Wilson's Dream Team">
+/* Read, trim and shorten the keyword. HTML is escaped with e() when printed. */
+$keyword = (isset($_GET["keyword"]) && is_string($_GET["keyword"])) ? clean_input($_GET["keyword"]) : "";
+$keyword = mb_substr($keyword, 0, 60);
 
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/dynamic.css">
-    <title>DTShop - Search Jobs</title>
-</head>
+$conn = db_connect();
+$stmt = false;
+$result = false;
+$search_failed = false;
 
-<body>
-    <?php
-    $page = "jobs";
-    require_once __DIR__ . "/functions.php";
-    require_once __DIR__ . "/inc/header.inc";
-
-    /* Read, trim and shorten the keyword. HTML is escaped with e() when it is printed. */
-    $keyword = isset($_GET["keyword"]) ? clean_input($_GET["keyword"]) : "";
-    $keyword = mb_substr($keyword, 0, 60);
-
-    $conn = db_connect();
-    $result = false;
-
-    if ($conn && $keyword !== "") {
-        /* Escape the LIKE wildcards so a typed % or _ is searched literally */
-        $like = "%" . addcslashes($keyword, "%_\\") . "%";
-        $jobsearch = mysqli_prepare($conn,
-            "SELECT * FROM jobs WHERE title LIKE ? OR job_ref LIKE ? ORDER BY job_ref");
-        mysqli_stmt_bind_param($jobsearch, "ss", $like, $like);
-        mysqli_stmt_execute($jobsearch);
-        $result = mysqli_stmt_get_result($jobsearch);
+if ($conn && $keyword !== "") {
+    /* Escape LIKE wildcards so a typed % or _ is searched literally */
+    $like = "%" . addcslashes($keyword, "%_\\") . "%";
+    $stmt = mysqli_prepare($conn,
+        "SELECT * FROM jobs WHERE title LIKE ? OR job_ref LIKE ? ORDER BY job_ref");
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "ss", $like, $like);
+        if (mysqli_stmt_execute($stmt)) {
+            $result = mysqli_stmt_get_result($stmt);
+        }
     }
-    ?>
+    if (!$result) {
+        $search_failed = true;
+        error_log("Job search failed: " . mysqli_error($conn));
+    }
+}
 
-    <main>
-        <section class="page-intro">
-            <h1>Search jobs</h1>
-        </section>
+require_once __DIR__ . "/inc/header.inc";
+?>
 
-        <section class="box">
-            <form action="search.php" method="get">
-                <label for="keyword">Search jobs:</label>
-                <input type="text" id="keyword" name="keyword" value="<?php echo e($keyword); ?>">
-                <button type="submit">Search</button>
-            </form>
-        </section>
+<main>
+    <section class="page-intro">
+        <h1>Search jobs</h1>
+    </section>
 
-        <div class="jobs-content">
-            <?php
-            if (!$conn) {
-                echo "<p>Search is unavailable right now. Please try again later.</p>";
-            } elseif ($keyword === "") {
-                echo "<p>Please enter a job title or reference number to search.</p>";
-            } elseif (!$result || mysqli_num_rows($result) == 0) {
-                echo "<p>No jobs found.</p>";
-            } else {
-                echo "<p>" . mysqli_num_rows($result) . " job(s) found for &quot;" . e($keyword) . "&quot;.</p>";
-                while ($row = mysqli_fetch_assoc($result)) {
-                    render_job($row);
-                }
+    <section class="box">
+        <form action="search.php" method="get">
+            <label for="keyword">Search jobs:</label>
+            <input type="text" id="keyword" name="keyword" value="<?php echo e($keyword); ?>">
+            <button type="submit">Search</button>
+        </form>
+    </section>
+
+    <div class="jobs-content">
+        <?php
+        if (!$conn) {
+            echo "<p>Search is unavailable right now. Please try again later.</p>";
+        } elseif ($keyword === "") {
+            echo "<p>Please enter a job title or reference number to search.</p>";
+        } elseif ($search_failed) {
+            echo "<p>Search failed. Please try again later.</p>";
+        } elseif (mysqli_num_rows($result) == 0) {
+            echo "<p>No jobs found.</p>";
+        } else {
+            echo "<p>" . mysqli_num_rows($result) . " job(s) found for &quot;" . e($keyword) . "&quot;.</p>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                render_job($row);
             }
-            if ($conn) {
-                mysqli_close($conn);
-            }
-            ?>
-            <p><a class="button" href="jobs.php">View all jobs</a></p>
-        </div>
-    </main>
+        }
 
-    <?php require_once __DIR__ . "/inc/footer.inc"; ?>
-</body>
+        if ($result instanceof mysqli_result) {
+            mysqli_free_result($result);
+        }
+        if ($stmt instanceof mysqli_stmt) {
+            mysqli_stmt_close($stmt);
+        }
+        if ($conn) {
+            mysqli_close($conn);
+        }
+        ?>
+        <p><a class="button" href="jobs.php">View all jobs</a></p>
+    </div>
+</main>
 
-</html>
+<?php require_once __DIR__ . "/inc/footer.inc"; ?>

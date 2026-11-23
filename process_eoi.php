@@ -59,14 +59,14 @@ if ($job_ref == "") {
 // Validate first name
 if (empty($first_name)) {
     $errors .= "<li>First name is required.</li>";
-} elseif (!preg_match("/^[A-Za-z]{1,20}$/", $first_name)) {
+} elseif (!preg_match("/^[\p{L}\p{M} ]{1,20}$/u", $first_name)) {
     $errors .= "<li>First name must contain only letters (max 20).</li>";
 }
 
 // Validate last name
 if (empty($last_name)) {
     $errors .= "<li>Last name is required.</li>";
-} elseif (!preg_match("/^[A-Za-z]{1,20}$/", $last_name)) {
+} elseif (!preg_match("/^[\p{L}\p{M} ]{1,20}$/u", $last_name)) {
     $errors .= "<li>Last name must contain only letters (max 20).</li>";
 }
 
