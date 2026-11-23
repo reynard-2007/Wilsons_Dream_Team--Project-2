@@ -17,36 +17,37 @@ Built for the group project, industry allocation **G05: E-Commerce & Digital Ret
 
 ## Project Structure
 
-```
-project2/
+```text
+Wilsons_Dream_Team--Project-2/
 ├── index.php          Home page
 ├── jobs.php           Job listings, read from the jobs table
 ├── apply.php          Job application (EOI) form
-├── about.php          Group information, contributions read from the about table
+├── about.php          Group information and contributions
 ├── process_eoi.php    Validates and saves EOI records
 ├── search.php         Job search results
 ├── login.php          Manager login
+├── logout.php         Manager logout
 ├── manage.php         HR manager page (login required)
-├── functions.php      Shared helper functions (e.g. input cleaning)
+├── functions.php      Shared helper functions
 ├── settings.php       Database connection details
 ├── dtshop_db.sql      Database export (tables and sample data)
-├── about.sql          SQL for the about table
+├── README.md
 ├── inc/
-│   ├── header.inc     Shared header (includes nav.inc)
+│   ├── auth.inc       Authentication and session protection
+│   ├── header.inc     Shared header 
 │   ├── nav.inc        Shared navigation
 │   └── footer.inc     Shared footer
 ├── images/            Page content images
-├── styles/
-│   ├── styles.css     Stylesheet
-│   └── images/        Images used by CSS
-└── README.md
+└── styles/
+    ├── styles.css     Main stylesheet
+    └── images/        Images used by CSS
 ```
 
-Shared header, navigation and footer live in `.inc` files and are pulled in with PHP includes. All links are relative.
+Shared header, navigation, footer and authentication components are organised in `.inc` files and included where required. All internal links use relative paths.
 
 ## Running Locally
 
-1. Copy the `project2/` folder into the `htdocs` folder of XAMPP.
+1. Copy the `Wilsons_Dream_Team--Project-2/` folder into the `htdocs` folder of XAMPP.
 2. Start Apache and MySQL.
 3. Open phpMyAdmin, create a database named `dtshop_db`, and import `dtshop_db.sql`.
 4. Check `settings.php` (host `localhost`, user `root`, no password, database `dtshop_db`).
@@ -56,25 +57,41 @@ Shared header, navigation and footer live in `.inc` files and are pulled in with
 
 | Table | Purpose |
 |-------|---------|
-| `eoi` | Expressions of interest. Auto-increment `EOInumber`, one field per Part 1 apply form input (job reference, full name, nickname, date of birth, gender, email, phone, street address, ward, province/city, postcode, skills, other skills) and `status` (`New`, `Current`, `Final`; default `New`). Created in code by `process_eoi.php` if missing. |
-| `jobs` | Job listings. `job_ref` (primary key, 5 characters), `title`, `description`, `salary`, `reports_to`, `location`, `responsibilities`, `essential`, `preferable`. Fields match the Part 1 jobs page. |
-| `users` | Manager accounts. Username and hashed password. A default `admin` / `admin` account is provided for the marker. |
-| `about` | Group member details and what each member completed in Part 1 and Part 2. |
+| `eoi` | Expressions of Interest. Contains an auto-increment `EOInumber` and fields corresponding to the Part 1 application form, including job reference, applicant details, contact information, address, skills and other skills. Also includes `status` with three predefined values: `New`, `Current` and `Final` (default: `New`). Created by `process_eoi.php` if it does not exist. |
+| `jobs` | Job listings. Includes `job_ref` (primary key, 5 characters), `title`, `description`, `salary`, `reports_to`, `location`, `responsibilities`, `essential` and `preferable`. Fields match the Part 1 jobs page. |
+| `users` | Manager accounts. Stores usernames and hashed passwords. A default `admin` / `admin` account is provided for the marker. |
+| `about` | Group member details, including contributions completed in Part 1 and Part 2. |
 
-`settings.php` holds the connection details and is used by every page that connects to the database. No database password is set.
+`settings.php` holds the database connection details and is used by every page that connects to the database. No database password is set.
 
 ## Pages and Features
 
 | Page | What it does |
 |------|--------------|
-| `index.php` | Company logo, name, slogan, description and image, product table, and a keyword search box that posts to `search.php`. |
-| `jobs.php` | Every job is read from the `jobs` table and printed in a loop from one article template. Includes the search bar, the inclusive employment aside and the "How we hire" ordered list. |
-| `search.php` | Reads the keyword, sanitises it, searches the `jobs` table and shows matching jobs in the same layout as `jobs.php`. Shows "No jobs found." when nothing matches. |
-| `apply.php` | Application form that posts to `process_eoi.php`. Browser validation is switched off; all checks run on the server. |
-| `process_eoi.php` | Redirects when opened directly (no POST data). Otherwise trims, strips slashes and escapes every input, validates formats, inserts the record and shows the new EOInumber. On errors it lists what to fix. |
-| `login.php` | Manager authentication using the `users` table and PHP sessions. |
-| `manage.php` | Login required. Managers can list all EOIs, list by job reference, search by applicant first name, last name or both, delete all EOIs for a job reference, change an EOI status, and choose the sort field. |
-| `about.php` | Group name, class schedule, member contributions (loaded from the `about` table), quotes, group photo and fun facts table. |
+| `index.php` | Displays the company logo, name, slogan, description, images, product table and a keyword search box that submits a GET request to `search.php`. |
+| `jobs.php` | Retrieves all job listings from the `jobs` table and displays them dynamically using a reusable article template. Includes a search bar, an inclusive employment statement and the "How we hire" ordered list. |
+| `search.php` | Receives the search keyword through GET, sanitises the input, searches the `jobs` table and displays matching jobs using the same layout as `jobs.php`. Displays "No jobs found." when no results match. |
+| `apply.php` | Provides an Expression of Interest (EOI) application form that submits data to `process_eoi.php`. Client-side HTML validation is disabled so that validation is performed on the server. |
+| `process_eoi.php` | Checks that the request is submitted using POST, processes and validates user input on the server, inserts valid applications into the `eoi` table and displays the generated EOInumber. Invalid submissions display appropriate error messages. |
+| `login.php` | Authenticates HR managers using the `users` table and PHP sessions. |
+| `logout.php` | Ends the manager's authenticated session and logs the user out. |
+| `manage.php` | Provides protected HR management functionality. Managers can list all EOIs, filter by job reference, search by applicant first name, last name or both, delete EOIs by job reference, update EOI status and choose a sort field. |
+| `about.php` | Displays group information, class schedule, member contributions loaded from the `about` table, quotes, group photo and the team fun facts table. |
+
+## Assessment Requirements
+
+This project implements the key requirements of COS10026 Applied Web Project Part 2:
+
+- Convert static HTML pages into dynamic PHP pages.
+- Reuse common website components through PHP includes.
+- Establish database connectivity using PHP and MySQL.
+- Create and manage the `eoi`, `jobs`, `users` and `about` database tables.
+- Implement server-side validation and sanitisation for application forms.
+- Dynamically display job listings and search results from the database.
+- Store submitted Expressions of Interest in the database.
+- Implement manager authentication and controlled access to management functionality.
+- Support EOI searching, filtering, sorting, deletion and status updates.
+- Load group member contributions dynamically from the database.
 
 ## Server-Side Validation
 
@@ -93,13 +110,28 @@ Shared header, navigation and footer live in `.inc` files and are pulled in with
 | Skill list | Selected from the listed skills |
 | Other skills | Optional text |
 
+All application data is validated on the server before being inserted into the database.
+
 ## Security
 
-- Database queries use prepared statements, so user input cannot change the SQL.
-- Manager passwords are stored as hashes, not plain text.
-- `manage.php` checks the session and redirects to `login.php` when the user is not logged in.
-- User input is trimmed, slashes are stripped and HTML is escaped before it is stored or displayed.
-- `process_eoi.php` cannot be opened by direct URL.
+- Manager passwords are stored as secure hashes using PHP's `password_hash()` function and verified using `password_verify()`.
+- Protected management pages require an authenticated PHP session.
+- Session management and account-locking mechanisms help protect manager accounts against unauthorised access and repeated failed login attempts.
+- User input is trimmed, sanitised and validated on the server before database operations.
+- Prepared statements are used for database queries to help prevent SQL injection.
+- HTML output is escaped using `htmlspecialchars()` to help prevent Cross-Site Scripting (XSS).
+- CSRF tokens protect management forms that modify or delete database records.
+- `process_eoi.php` rejects direct access without a valid POST submission.
+
+## Manager Login
+
+The following default account is provided for assessment purposes:
+
+| Username | Password |
+|----------|----------|
+| admin | admin |
+
+The account is stored in the `users` table. The password is stored as a hash rather than plain text.
 
 ## Acknowledgement of Aboriginal and Torres Strait Islander Peoples
 
@@ -107,20 +139,23 @@ The jobs page carries an inclusive employment statement that encourages applicat
 
 ## Validation
 
+The website can be checked using the following validation tools:
+
 - HTML: https://validator.w3.org/
 - CSS: https://jigsaw.w3.org/css-validator/
 
 ## Team
 
-**Group:** Wilson's Dream Team
+**Group:** Wilson's Dream Team  
+**Industry Allocation:** G05 – E-Commerce & Digital Retail Platform  
 **Class:** Thursday, 7am to 10am
 
-| Name | Student ID | Part 1 | Part 2 |
-|------|------------|--------|--------|
-| Yuki | 106394628 | `jobs.html` | `jobs` table, `jobs.php`, `search.php` |
-| Khang | 106391302 | `index.html` | `index.php`, `mange.php`, `settings.php`, `nav.inc`, `header.inc`, `footer.inc` |
-| Hung | 106726072 | `about.html` | `about.php`, `about` table, `login.php`, `logout.php`, `users` table |
-| Anh | 106727091 | `apply.html` | `apply.php`, `process_eoi.php`, `eoi` table |
+| Name | Student ID | Part 1 Contribution | Part 2 Contribution |
+|------|------------|--------------------|--------------------|
+| Yuki | 106394628 | `jobs.html` | `jobs.php`, `jobs` table and `search.php` |
+| Khang | 106391302 | `index.html` | `index.php`, `manage.php`, `settings.php` and shared PHP includes (`nav.inc`, `header.inc`, `footer.inc`) |
+| Hung | 106726072 | `about.html` | `about.php`, `about` table, `login.php`, `logout.php` and `users` table |
+| Anh | 106727091 | `apply.html` | `apply.php`, `process_eoi.php` and `eoi` table |
 
 ## Academic Integrity
 
