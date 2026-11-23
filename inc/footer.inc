@@ -3,7 +3,7 @@
 
         <section>
             <h2>DTShop</h2>
-            <p>Digital Tech Components<br>Professional Technology Store</p>
+            <a>Digital Tech Components<br>Professional Technology Store</a>
         </section>
 
         <section>

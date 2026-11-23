@@ -25,7 +25,7 @@ require_once __DIR__ . "/inc/header.inc";
     <section class="page-intro">
         <p class="eyebrow">Now hiring &middot; <?php echo $total; ?> open roles</p>
         <h1>Current vacancies</h1>
-        <p style="color: #c9d3ea;">
+        <p style="color: #2457C5;">
             DTShop is growing its web and user experience team. <?php echo $total; ?> roles are open for 2026.
             All are based in Ho Chi Minh City with hybrid working.
         </p>
@@ -85,7 +85,7 @@ require_once __DIR__ . "/inc/header.inc";
 
             <section class="job" aria-labelledby="process-title">
                 <p class="eyebrow">Hiring process</p>
-                <h2 id="process-title">How we hire</h2>
+                <h1 id="process-title">How we hire</h1>
                 <p class="hire-intro">Five steps from application to offer.</p>
 
                 <ol class="steps">

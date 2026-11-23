@@ -40,7 +40,7 @@ require_once __DIR__ . "/inc/header.inc";
 
         <!-- 1. Group Name and Class Schedule -->
         <section>
-            <h2 style="margin-top: 0;">Our Group Information</h2>
+            <h1 style="margin-top: 0;">Our Group Information</h1>
             <!-- Fix 2: closed the > of div.box, and closed </div> -->
             <div class="box">
                 <ul class="group-list">

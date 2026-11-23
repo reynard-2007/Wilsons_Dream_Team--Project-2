@@ -270,8 +270,8 @@ th, td {
 }
 
 th {
-    background-color: #2457C5;
-    color: #ffffff;
+    background-color: #000000;
+    color: #00f2fe;
 }
 
 /* animation*/
@@ -492,14 +492,6 @@ aside.side-note {
     line-height: 1.1;
     letter-spacing: -0.025em;
     color: #ffffff;
-}
-
-.job h1 {
-    margin: 0;
-    font-size: clamp(1.7rem, 4vw, 2.4rem);
-    line-height: 1.1;
-    letter-spacing: -0.025em;
-    color: #2457C5 !important;
 }
 
 .job h3 {
