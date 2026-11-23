@@ -278,6 +278,10 @@ table tbody tr:hover td {
     box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
 }
 
+search-title.box:hover {
+    border-color: #00f2fe;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+}
 
 .tags li:hover {
     transform: translateY(-3px);

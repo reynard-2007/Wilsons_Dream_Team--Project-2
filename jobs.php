@@ -42,7 +42,7 @@ s
         <?php } ?>
     </section>
 
-    <section class="job" id="Search">
+    <section class="box" id="search-title">
         <p class="eyebrow">Search</p>
         <form action="search.php" method="get">
             <label for="keyword">Search jobs:</label>
