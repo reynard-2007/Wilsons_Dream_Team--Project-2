@@ -22,7 +22,7 @@ require_once __DIR__ . "/inc/header.inc";
         <section class="page-intro">
             <p class="eyebrow">Now hiring &middot; <?php echo $total; ?> open roles</p>
             <h1>Current vacancies</h1>
-            <p style="color: #c9d3ea;">
+            <p style="color: #00f2fe;">
                 DTShop is growing its web and user experience team. <?php echo $total; ?> roles are open for 2026.
                 All are based in Ho Chi Minh City with hybrid working.
             </p>
@@ -58,8 +58,8 @@ require_once __DIR__ . "/inc/header.inc";
                     thousands of years. We want that way of thinking, especially around community, access and design,
                     to shape the technology we build.</p>
                 <p>If you need adjustments during recruitment, tell us and we will arrange them.</p>
-                <p><a href="mailto:careers@dtshop.vn">Email careers@dtshop.vn</a></p>
-            </aside>
+                <p> <a href="mailto:careers@dtshop.vn">Email: careers@dtshop.vn</a> </p>
+            </aside>    
 
             <div class="jobs-content">
 

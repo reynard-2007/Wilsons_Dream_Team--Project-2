@@ -117,8 +117,7 @@ require_once __DIR__ . "/inc/header.inc";
 ?>
 
     <main>
-        <section>
-            <h2 style="margin-top: 0;">Manager Login</h2>
+            <h1 style="margin-top: 0;">Manager Login</h1>
             <div class="box login-box">
                 <?php if ($error !== ""): ?>
                     <p class="error" role="alert"><?php echo htmlspecialchars($error); ?></p>

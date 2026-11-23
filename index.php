@@ -14,7 +14,7 @@ require_once __DIR__ . "/inc/header.inc";
             <p class="slogan">Where Performance Meets Price</p>
             <p>DTShop is an online store that sells PC components for gamers, students and professionals. 
                 We are growing our web development and user experience team to improve our product listings and online shopping experience</p>
-            <p style="color: #00f2fe;">Join us and help build the future of PC shopping</p>
+            <p style="color: #2457C5;">Join us and help build the future of PC shopping</p>
 
                 <ul class="tags">
                     <li>Friendly and creative team</li>
